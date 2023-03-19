@@ -4,25 +4,32 @@ body {
     box-sizing: border-box;
 }
 
-* {
-    font-family: inter_regular;
-}
 
 :root {
-    --app-main-color:#1F51FF;
-    --app-main-back-color:#F2F1EE;
-    --app-secondary-back-color:#F1F1F1;
-    --app-main-border:#E8E8E8;
-    --app-line-height:1.5;
-    --app-letter-space:1px;
-    --small-font-size:12px;
-    --medium-font-size:14px;
-    --large-font-size:16px;
-    --extralarge-font-size:22px;
-    --margin-input:20px;
+    --app-main-color: #1F51FF;
+    --app-main-back-color: #F2F1EE;
+    --app-secondary-back-color: #F1F1F1;
+    --app-main-border: #E8E8E8;
+    --main-font-color: #1d1d1f;
+    --main-font-secondary-color: #424245;
+    --app-secondary-border: #E1E1E1;
+    --app-line-height: 1.5;
+    --app-letter-space: 1px;
+    --small-font-size: 12px;
+    --medium-font-size: 14px;
+    --large-font-size: 16px;
+    --extralarge-font-size: 22px;
+
 }
 
-h1, h3 {
+
+* {
+    font-family: inter_regular;
+    color: var(--main-font-color);
+}
+
+h1,
+h3 {
     padding: 0;
     margin: 0;
 }
