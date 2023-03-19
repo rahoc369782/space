@@ -1,0 +1,72 @@
+:root {
+    --wrapper-width:250px;
+    --input-height:20px;
+}
+
+.useronboard_wrapper {
+    
+}
+
+.wrapper_headertop_part {
+    width: var(--wrapper-width);
+    padding: 30px;
+}   
+[onboard-app-quote] {
+    font-size: var(--medium-font-size);
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
+
+}
+
+[onboard-app-title] {
+    padding: 10px 0px;
+    font-size: var(--extralarge-font-size);
+    font-family: inter_ebold;
+}
+/* #eaeaea */
+.wrapper_middle_section {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrapper_form_section {
+    margin: auto;
+    width: var(--wrapper-width);
+    max-width: var(--wrapper-width);
+}
+
+.wrapper_form_section [form-title] {
+    font-size: var(--extralarge-font-size);
+    font-family: inter_bold;
+}
+.wrapper_form_section .form_input {
+    width: 100%;
+    /* height: var(--input-height) */
+}
+
+.wrapper_form_section .input_spacing {
+    margin-top: var(--margin-input);
+}
+.wrapper_form_section .form_input [onb-email-input] {
+    font-size: var(--small-font-size);
+    width: inherit;
+    height: var(--input-height);
+    border: 1px solid var(--app-main-border);
+    border-radius: 3px;
+    /* padding: 8px; */
+}
+
+.wrapper_form_section .form_btn {
+    width: 100%;
+}
+
+.wrapper_form_section .form_btn [onb-email-btn] {
+    cursor: pointer;
+    font-size: var(--small-font-size);
+    width: inherit;
+    /* height: inherit; */
+    border: 1px solid var(--app-main-border);
+    border-radius: 3px;
+    padding: 8px;
+}
