@@ -6,10 +6,10 @@ body {
 
 
 :root {
-    --app-main-color: #1F51FF;
+    --app-main-color: #0c74df;
     --app-main-back-color: #F2F1EE;
-    --app-secondary-back-color: #F1F1F1;
-    --app-main-border: #E8E8E8;
+    --app-secondary-back-color: #F0F0F0;
+    --app-main-border: #EEEEEE;
     --main-font-color: #1d1d1f;
     --main-font-secondary-color: #424245;
     --app-secondary-border: #E1E1E1;
@@ -19,7 +19,6 @@ body {
     --medium-font-size: 14px;
     --large-font-size: 16px;
     --extralarge-font-size: 22px;
-
 }
 
 
@@ -38,4 +37,8 @@ input {
     padding: 0;
     margin: 0;
     outline: none;
+}
+
+a {
+    text-decoration: none;
 }
