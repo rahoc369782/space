@@ -2,6 +2,7 @@ body {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    position: relative;
 }
 
 
@@ -12,6 +13,7 @@ body {
     --app-main-border: #EEEEEE;
     --main-font-color: #1d1d1f;
     --main-font-secondary-color: #424245;
+    --main-font-third-color: #212121;
     --app-secondary-border: #E1E1E1;
     --app-line-height: 1.5;
     --app-letter-space: 1px;
@@ -19,6 +21,7 @@ body {
     --medium-font-size: 14px;
     --large-font-size: 16px;
     --extralarge-font-size: 22px;
+    --color-bg-default: white;
 }
 
 

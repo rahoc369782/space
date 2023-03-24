@@ -4,355 +4,18 @@
 <head>
     <title>Space</title>
     <meta name="viewport" content="initial-scale=1">
-    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/onboard.css">
+    <link rel="stylesheet preload" as="fonts" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/main.css">
-    <!-- <link rel="preload" as="style" href="../styles/onboard.css" onload="this.rel='stylesheet'"> -->
-    <style>
-        :root {
-            --wrapper-width: 280px;
-            --mainlinks-width: 650px;
-            --input-height: 20px;
-            --input-btn-padding: 10px;
-            --margin-input: 15px;
-            --minwidth-bottom-links-tabs: 90px;
-        }
+    <link rel="stylesheet preload prefetch" as="style" href="../styles/sp_nav.css">
+    <script src="../scripts/onboarding.js">
+    </script>
 
-        .useronboard_wrapper {
-            height: 100vh;
-            user-select: none;
-        }
-
-        .wrapper_headertop_part {
-            width: var(--wrapper-width);
-            padding: 30px;
-        }
-
-        [onboard-app-quote] {
-            font-size: var(--medium-font-size);
-            line-height: var(--app-line-height);
-            letter-spacing: var(--app-letter-space);
-
-        }
-
-        [onboard-app-title] {
-            padding: 10px 0px;
-            font-size: var(--extralarge-font-size);
-            font-family: inter_ebold;
-        }
-
-        /* #eaeaea */
-        /* #0c74df */
-        .wrapper_middle_section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: inherit;
-        }
-
-        .wrapper_form_section {
-            margin: auto;
-            width: var(--wrapper-width);
-            max-width: var(--wrapper-width);
-            display: none;
-            visibility: hidden;
-        }
-
-        .wrapper_form_section [form-title] {
-            font-size: var(--extralarge-font-size);
-            font-family: inter_bold;
-            padding-bottom: 10px;
-
-        }
-
-        .wrapper_form_section .form_input {
-            width: 100%;
-            /* height: var(--input-height) */
-        }
-
-        .wrapper_form_section .form_input span {
-            cursor: pointer;
-            list-style: none;
-            color: var(--app-main-color);
-            font-size: 12px;
-            letter-spacing: .02em;
-            line-height: 1;
-            background: no-repeat;
-            text-decoration: none;
-            white-space: nowrap;
-            font-family: inter_regular;
-        }
-
-        .wrapper_form_section .input_spacing {
-            margin-top: var(--margin-input);
-        }
-
-        .resend_otp_opt {
-            display: flex;
-            justify-content: end;
-            margin-top: 10px;
-        }
-
-        .wrapper_form_section .form_input input {
-            font-size: var(--small-font-size);
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid var(--app-main-border);
-            border-radius: 3px;
-            padding: var(--input-btn-padding);
-            /* padding: 8px; */
-        }
-
-        .wrapper_form_section .form_btn {
-            width: 100%;
-        }
-
-        .wrapper_form_section .form_btn button {
-            cursor: pointer;
-            font-size: var(--small-font-size);
-            width: inherit;
-            border: 1px solid var(--app-main-border);
-            border-radius: 3px;
-            background-color: var(--app-main-color);
-            color: white;
-            padding: var(--input-btn-padding);
-        }
-
-        .wrapper_form_section .form_btn button:hover {
-            opacity: .9;
-        }
-
-        .wrapper_divider {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 10px 0px;
-        }
-
-        .wrapper_divider span {
-            font-size: var(--small-font-size);
-            color: var(--main-font-secondary-color);
-        }
-
-        .wrapper_other_onboardinopt {}
-
-        .wrapper_other_onboardinopt .other_onboardinopt {
-            box-sizing: border-box;
-            width: 100%;
-            padding: var(--input-btn-padding);
-            border-radius: 3px;
-            border: 1px solid var(--app-main-border);
-            background-color: var(--app-secondary-back-color);
-            /* text-align: center; */
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .wrapper_other_onboardinopt .other_onboardinopt span {
-            font-size: var(--small-font-size);
-            font-family: inter_medium;
-        }
-
-        .onboarding_content span {
-            font-size: 12px;
-            color: #1d1d1f;
-            line-height: 1;
-            letter-spacing: .2px;
-            font-family: inter_regular;
-        }
-
-        .onboarding_content span a {
-            font-size: 12px;
-            color: #1d1d1f;
-            line-height: .9;
-            letter-spacing: .2px;
-            text-decoration: underline;
-            cursor: pointer;
-            padding: 1px;
-            font-family: inter_regular;
-        }
-
-        .main_imp_links {
-            position: fixed;
-            top: 0px;
-            width: 100%;
-            height: 40px;
-            background-color: var(--app-secondary-back-color);
-            /* border: 1px solid var(--app-secondary-border); */
-        }
-
-        .main_imp_links .main_links_wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: auto;
-            height: inherit;
-            width: calc(var(--minwidth-bottom-links-tabs) * 6);
-            max-width: calc(var(--minwidth-bottom-links-tabs) * 6);
-        }
-
-        .main_imp_links .main_links_wrapper .imp_page_links {
-            height: inherit;
-        }
-
-        .main_imp_links .main_links_wrapper .imp_page_links a {
-            cursor: pointer;
-            height: inherit;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
-            color: #1d1d1f;
-            font-size: 12px;
-            min-width: var(--minwidth-bottom-links-tabs);
-            letter-spacing: .02em;
-            line-height: 1;
-            background: no-repeat;
-            text-decoration: none;
-            white-space: nowrap;
-            font-family: inter_regular;
-        }
-
-        .main_imp_links .main_links_wrapper .imp_page_links a:hover {
-            font-weight: 500;
-        }
-
-        #onb_login_opt {
-            display: none;
-        }
-
-        #registrationn_pointer {
-            color: var(--app-main-color);
-            cursor: pointer;
-        }
-
-        .input_group_block {
-            display: none;
-        }
-
-        .active_inputblock {
-            display: block;
-        }
-
-        .wrapper_form_active {
-            display: block;
-            visibility: visible;
-        }
-    </style>
 </head>
 
 <body>
     <main>
-        <div class="useronboard_wrapper">
-
-            <div class="wrapper_middle_section">
-                <div onboarding-form-container class="wrapper_form_section wrapper_form_active">
-                    <div class="input_blocks_flow_container">
-                        <div onb-lg-userid-block class="input_group_block active_inputblock">
-                            <div class="form_input input_spacing">
-                                <input onb-email-input placeholder="Your Email / Username / Mobile" type="email">
-                            </div>
-                            <div class="form_input input_spacing">
-                                <input onb-password-input placeholder="Your Password" type="password">
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button onclick="openBlock(event,'n')" onb-email-btn>Continue</button>
-                            </div>
-                        </div>
-                        <div onb-otp-block class="input_group_block">
-                            <div class="form_input input_spacing">
-                                <input onb-otp-input placeholder="Enter OTP" type="number">
-                                <div class="resend_otp_opt">
-                                    <span>Resend OTP</span>
-                                </div>
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button type="submit" onclick="openBlock(event,'n')" onb-otp-btn>Continue</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="onboarding_content input_spacing">
-                        <span>New in space <a onclick="openFormWrapper(event,'n')" id="registrationn_pointer">Register
-                                here</a></span>
-                    </div>
-                    <div class="onboarding_content input_spacing">
-                        <span>By continuing you indicate that you agree to Space's <a>Terms of Service</a> and
-                            <a>Privacy Policy</a></span>
-                    </div>
-                </div>
-                <div onboarding-form-container class="wrapper_form_section">
-                    <div class="input_blocks_flow_container">
-                        <div is_login_allowed onb-rg-userid-block class="input_group_block">
-                            <div class="form_input input_spacing">
-                                <input id="onb_email_input" placeholder="Your Email / Number" type="email">
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button page=rg-userid-btn onclick="sendOtp(event,'n')" onb-email-btn>Send OTP</button>
-                            </div>
-                        </div>
-
-                        <div is_login_allowed onb-rg-otp-block class="input_group_block">
-                            <div class="wrapper_other_onboardinopt">
-                                <div class="other_onboardinopt">
-                                    <span user-unique-id></span>
-                                    <span onclick="openBlock(event, 'p')">Reset</span>
-                                </div>
-                            </div>
-                            <div class="form_input input_spacing">
-                                <input onb-otp-input placeholder="Enter OTP" type="number">
-                                <div class="resend_otp_opt">
-                                    <span>Resend OTP</span>
-                                </div>
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button onclick="verifyOtp(event,'n')" onb-otp-btn>Verify</button>
-                            </div>
-                        </div>
-                        <div onb-rg-password-block class="input_group_block">
-                            <div class="form_input input_spacing">
-                                <input onb-password-input placeholder="Set Password" type="text">
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button onclick="openBlock(event,'n')" onb-email-btn>Continue</button>
-                            </div>
-                        </div>
-                        <div onb-rg-username-block class="input_group_block">
-                            <div class="form_input input_spacing">
-                                <input onb-username-input placeholder="Set Username" type="text">
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button onclick="openBlock(event,'n')">Continue</button>
-                            </div>
-                        </div>
-                        <div is_login_allowed onb-rg-personal-block class="input_group_block">
-                            <div class="form_input input_spacing">
-                                <input onb-username-input placeholder="Your DOB" type="text">
-                            </div>
-                            <div class="form_input input_spacing">
-                                <input onb-username-input placeholder="Your Gender" type="text">
-                            </div>
-                            <div class="form_input input_spacing">
-                                <input onb-username-input placeholder="Your Profession" type="text">
-                            </div>
-                            <div class="form_btn input_spacing">
-                                <button onclick="openBlock(event,'n')">Let's Go</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="onb_login_opt" class="onboarding_content input_spacing">
-                        <span>Already a member <a onclick="openFormWrapper(event,'p')" id="registrationn_pointer">Login
-                                here</a></span>
-                    </div>
-
-                    <div class="onboarding_content input_spacing">
-                        <span>By continuing you indicate that you agree to Space's <a>Terms of Service</a> and
-                            <a>Privacy Policy</a>.</span>
-                    </div>
-                </div>
-            </div>
+        <nav>
             <div class="main_imp_links">
                 <div class="main_links_wrapper">
                     <div class="imp_page_links">
@@ -375,9 +38,153 @@
                     </div>
                 </div>
             </div>
+        </nav>
+        <div class="useronboard_wrapper">
+            <div class="wrapper_middle_section">
+                <div onboarding-login-form-container class="wrapper_form_section">
+                    <div class="input_blocks_flow_container">
+                        <div onb-lg-userid-block class="input_group_block active_lg_inputblock">
+                            <div>
+                                <h2>Signin now</h2>
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input autofocus btn="onb-password-btn" common-input
+                                    placeholder="Your Email / Username / Mobile" type="email">
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-password-btn" common-input placeholder="Your Password" type="password">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-password-btn onclick="openlgBlock(event,'n')" onb-lg-email-btn>
+                                    Verify
+                                </button>
+                            </div>
+                        </div>
+                        <div onb-otp-block class="input_group_block">
+                            <div>
+                                <h3>Enter OTP sent</h3>
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-lg-otp-btn" common-input placeholder="Enter OTP" type="number">
+                                <div class="resend_otp_opt">
+                                    <span>Resend OTP</span>
+                                </div>
+
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-lg-otp-btn type="submit" onclick="openlgBlock(event,'n')"
+                                    onb-otp-btn>Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="onboarding_content input_spacing">
+                        <span>New in space <a onclick="openFormWrapper('login','register')"
+                                id="registrationn_pointer">Register here</a>
+                            </a></span>
+                    </div>
+
+                    <div class="onboarding_content bottom_dis">
+                        <span>By continuing you indicate that you agree to Space's <a>Terms of Service</a> and
+                            <a>Privacy Policy</a>.</span>
+                    </div>
+
+                </div>
+                <div onboarding-register-form-container class="wrapper_form_section ">
+                    <div class="input_blocks_flow_container">
+                        <div onb-rg-userid-block class="input_group_block active_rg_inputblock">
+                            <div>
+
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-email-btn" common-input id="onb_email_input"
+                                    placeholder="Your Email / Number" type="email">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-email-btn page=rg-userid-btn onclick="sendOtp(event,'n')"
+                                    onb-email-btn>Send OTP</button>
+                            </div>
+                        </div>
+
+                        <div onb-rg-otp-block class="input_group_block">
+                            <div class="wrapper_other_onboardinopt">
+                                <div>
+                                    <span user-unique-id></span>
+                                    <span onclick="openrgBlock(event, 'p')">Reset</span>
+                                </div>
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-otp-btn" common-input placeholder="Enter OTP" type="number">
+                                <div class="resend_otp_opt">
+                                    <span>Resend OTP</span>
+                                </div>
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-otp-btn onclick="verifyOtp(event,'n')" onb-otp-btn>Verify</button>
+                            </div>
+                        </div>
+                        <div onb-rg-password-block class="input_group_block">
+                            <div></div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-password-btn" common-input onb-password-input
+                                    placeholder="Set Password" type="text">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-password-btn onclick="setPassword(event,'n')"
+                                    onb-email-btn>Continue</button>
+                            </div>
+                        </div>
+                        <div onb-rg-username-block class="input_group_block">
+                            <div></div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-username-btn" common-input placeholder="Set Username" type="text">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-username-btn onclick="setUsername(event,'n')">Continue</button>
+                            </div>
+                        </div>
+                        <div onb-rg-personal-block class="input_group_block">
+                            <div></div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-personal-btn" common-input onb-username-input placeholder="Your DOB"
+                                    type="text">
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-personal-btn" common-input onb-username-input
+                                    placeholder="Your Gender" type="text">
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-personal-btn" common-input onb-username-input
+                                    placeholder="Your Profession" type="text">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-personal-btn onclick="setPersonalinfo(event,'n')">Let's
+                                    Go</button>
+                            </div>
+                        </div>
+                        <div onb-rg-done-block class="input_group_block">
+                            <h4>Your account is created successfully.</h4>
+                            <div class="form_btn input_spacing">
+                                <a title="plans_page" href="./space_plans.html" target="_blank"><button
+                                        onb-rg-personal-btn common-input>FINISH
+                                        UP</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="onb_login_opt" class="onboarding_content input_spacing">
+                        <span>Already a member <a onclick="openFormWrapper('register','login')"
+                                id="registrationn_pointer">Login
+                                here</a></span>
+                    </div>
+
+                    <div class="onboarding_content bottom_dis">
+                        <span>By continuing you indicate that you agree to Space's <a>Terms of Service</a> and
+                            <a>Privacy Policy</a>.</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
-    <script src="../scripts/onboarding.js"></script>
+
 </body>
 
 </html>
