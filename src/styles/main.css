@@ -16,7 +16,7 @@ body {
     --main-font-third-color: #212121;
     --app-secondary-border: #E1E1E1;
     --app-line-height: 1.5;
-    --app-letter-space: 1px;
+    --app-letter-space: .2px;
     --small-font-size: 12px;
     --medium-font-size: 14px;
     --large-font-size: 16px;

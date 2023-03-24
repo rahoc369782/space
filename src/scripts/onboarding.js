@@ -59,7 +59,7 @@ async function setUsername(event, flow) {
 }
 
 async function setPersonalinfo(event, flow) {
-    sessionStorage.setItem("rg_status", "rg-done")
+    sessionStorage.setItem("rg_status", "done")
     await call_api()
     openrgBlock(event, flow)
 }

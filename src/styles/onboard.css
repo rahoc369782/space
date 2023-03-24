@@ -10,10 +10,11 @@
 }
 
 
-.useronboard_wrapper {
-    height: 100vh;
-    position: absolute;
-    top: 0;
+.useronboard_wrapper {  
+    height: 80vh;
+    max-height: 80vh;
+    /* position: absolute;
+    top: 0; */
     width: 100%;
     user-select: none;
 }
@@ -111,8 +112,17 @@
     /* padding: 8px; */
 }
 
+.wrapper_form_section .form_input input:focus {
+    transform: scale(1.05);
+    transition: transform 200ms;
+}
+
 .wrapper_form_section .form_btn {
     width: 100%;
+}
+
+button a {
+    color: white;
 }
 
 .wrapper_form_section .form_btn button {
@@ -163,6 +173,19 @@
     font-family: inter_medium;
 }
 
+.account_created {
+    text-align: center;
+}
+
+.account_created_content {
+    color: var(--main-font-third-color);
+    text-align: center;
+    font-size: var(--small-font-size);
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
+
+}
+
 .onboarding_content {
     display: flex;
     justify-content: center;
@@ -170,10 +193,8 @@
 }
 
 .bottom_dis {
-    width: var(--wrapper-width);
     margin: auto;
-    display: flex;
-    justify-content: center;
+    margin: 0px 0px 15px 0px;
 }
 
 .onboarding_content span {
@@ -346,4 +367,12 @@ button .dot-spinner div {
 
 .wrong_input_highlight {
     animation: wrong-input 100ms ease-in-out;
+}
+
+.footer_content {
+    height: auto;
+}
+.footer_content_sub {
+    margin: auto;
+    width: var(--wrapper-width);
 }

@@ -4,7 +4,7 @@
 }
 
 .main_imp_links {
-    position: sticky;
+    position: fixed;
     top: 0px;
     width: 100%;
     height: var(--g-header-height);
