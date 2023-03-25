@@ -14,50 +14,52 @@
 </head>
 
 <body>
-    <main>
-        <nav>
-            <div class="main_imp_links">
-                <div class="main_links_wrapper">
-                    <div class="imp_page_links">
-                        <a href="">Who we are</a>
-                    </div>
-                    <div class="imp_page_links">
-                        <a href="">About us</a>
-                    </div>
-                    <div class="imp_page_links">
-                        <a href="">Our values</a>
-                    </div>
-                    <div class="imp_page_links">
-                        <a href="">Contact us</a>
-                    </div>
-                    <div class="imp_page_links">
-                        <a href="">Conditions</a>
-                    </div>
-                    <div class="imp_page_links">
-                        <a href="">Updates</a>
-                    </div>
-                </div>
+    <nav class="main_imp_links">
+        <div class="main_links_wrapper">
+            <div class="imp_page_links">
+                <a href="">Who we are</a>
             </div>
-        </nav>
+            <div class="imp_page_links">
+                <a href="">About us</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Our values</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Contact us</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Conditions</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Updates</a>
+            </div>
+        </div>
+    </nav>
+    <main class="onboarding_content">
         <div class="useronboard_wrapper">
             <div class="wrapper_middle_section">
                 <div onboarding-login-form-container class="wrapper_form_section">
                     <div class="input_blocks_flow_container">
                         <div onb-lg-userid-block class="input_group_block active_lg_inputblock">
                             <div>
-                                <h4>Continue with...</h4>
+                                <!-- <h4>Continue with...</h4> -->
                             </div>
                             <div class="form_input input_spacing">
-                                <input autofocus btn="onb-password-btn" common-input
+                                <input autofocus btn="onb-password-btn" id="lg_email_value" common-input
                                     placeholder="Your Email / Username / Mobile" type="email">
                             </div>
                             <div class="form_input input_spacing">
-                                <input btn="onb-password-btn" common-input placeholder="Your Password" type="password">
+                                <input btn="onb-password-btn" common-input id="lg_password_value"
+                                    placeholder="Your Password" type="password">
                             </div>
                             <div class="form_btn input_spacing">
-                                <button onb-password-btn onclick="openlgBlock(event,'n')" onb-lg-email-btn>
+                                <button onb-password-btn onclick="authenticate_user(event,'n')" onb-lg-email-btn>
                                     Verify
                                 </button>
+                            </div>
+                            <div class="wrong_input input_spacing">
+                                <span auth-wrong-input-value></span>
                             </div>
                         </div>
                         <div onb-otp-block class="input_group_block">
@@ -65,15 +67,19 @@
                                 <h3>Enter OTP sent</h3>
                             </div>
                             <div class="form_input input_spacing">
-                                <input btn="onb-lg-otp-btn" common-input placeholder="Enter OTP" type="number">
+                                <input btn="onb-lg-otp-btn" id="lg_otp_value" common-input placeholder="Enter OTP"
+                                    type="number">
                                 <div class="resend_otp_opt">
                                     <span>Resend OTP</span>
                                 </div>
 
                             </div>
                             <div class="form_btn input_spacing">
-                                <button onb-lg-otp-btn type="submit" onclick="openlgBlock(event,'n')"
+                                <button onb-lg-otp-btn type="submit" onclick="authenticate_user_otp(event,'n')"
                                     onb-otp-btn>Continue</button>
+                            </div>
+                            <div class="wrong_input input_spacing">
+                                <span otp-wrong-input-value></span>
                             </div>
                         </div>
                     </div>
@@ -99,14 +105,20 @@
                                 <button onb-rg-email-btn page=rg-userid-btn onclick="sendOtp(event,'n')"
                                     onb-email-btn>Send OTP</button>
                             </div>
+                            <div id="onb_login_opt" class="onboarding_content input_spacing">
+                                <span>Already a member <a onclick="openFormWrapper('register','login')"
+                                        id="registrationn_pointer">Login
+                                        here</a></span>
+                            </div>
+                            <div class="wrong_input input_spacing">
+                                <span rg-email-input-value></span>
+                            </div>
                         </div>
 
                         <div onb-rg-otp-block class="input_group_block">
                             <div class="wrapper_other_onboardinopt">
-                                <div>
-                                    <span user-unique-id></span>
-                                    <span onclick="openrgBlock(event, 'p')">Reset</span>
-                                </div>
+                                <span user-unique-id></span>
+                                <label onclick="openrgBlock(event, 'p')">Change</label>
                             </div>
                             <div class="form_input input_spacing">
                                 <input btn="onb-rg-otp-btn" common-input placeholder="Enter OTP" type="number">
@@ -159,7 +171,9 @@
                         </div>
                         <div onb-rg-done-block class="input_group_block">
                             <h3 class="account_created">Welcome</h3>
-                            <p class="account_created_content">Your account is created successfully. One last step is remaining to activate your account. We Promise that your this small investment will worth a lot!</p>
+                            <p class="account_created_content">Your account is created successfully. One last step
+                                is remaining to activate your account. We Promise that your this small investment
+                                will worth a lot! & add value in your life.</p>
                             <div class="form_btn input_spacing">
                                 <button onb-rg-personal-btn common-input><a title="plans_page" href="./space_plans.html"
                                         target="_blank">FINISH
@@ -167,31 +181,23 @@
                             </div>
                         </div>
                     </div>
-                    <div id="onb_login_opt" class="onboarding_content input_spacing">
-                        <span>Already a member <a onclick="openFormWrapper('register','login')"
-                                id="registrationn_pointer">Login
-                                here</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer_content">
-            <div class="footer_content_sub">
-                <div class="onboarding_content bottom_dis">
-                    <span>By continuing you indicate that you agree to Space's <a>Terms of Service</a> and
-                        <a>Privacy Policy</a>.</span>
-                </div>
-                <div class="onboarding_content bottom_dis">
-                    <span>On mission to make money work for you!</span>
-                </div>
-                <div class="onboarding_content bottom_dis">
-                    <span><span>Contact us on<!-- --> <span style="color:#3e92f2">pointersinc@gmail.com</span> <br>Space
-                            inc. @2022 All rights are reserved.</span></span>
+
                 </div>
             </div>
         </div>
     </main>
-
+    <div class="footer_content">
+        <div class="footer_content_sub">
+            <div class="onboarding_content bottom_dis">
+                <span>By continuing you indicate that you agree <br />to Space's <a>Terms</a> and
+                    <a>Privacy Policy</a>.</span>
+            </div>
+            <div class="onboarding_content bottom_dis">
+                <span><span>Contact us on<!-- --> <span style="color:#3e92f2">pointersinc@gmail.com</span> <br>Space
+                        inc. @2022 All rights are reserved.</span></span>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

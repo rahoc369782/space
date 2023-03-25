@@ -35,8 +35,45 @@ function apply_keypress_event() {
             }
         })
     })
+}
 
+function display_messages(btn, element, message) {
+    element.innerText = message;
+    btn.innerText = 'Continue'
+    btn.classList.add("wrong_input_highlight")
+    setTimeout(() => {
+        btn.classList.remove("wrong_input_highlight")
+        // element.innerText = ''
+    }, 500)
+}
 
+async function authenticate_user(event, flow) {
+    let username = document.getElementById("lg_email_value").value
+    let password = document.getElementById("lg_password_value").value
+    let warning = document.querySelector("[auth-wrong-input-value]")
+    if (!username) {
+        display_messages(event.target, warning, 'Please enter valid username')
+        return
+    }
+    if (!password) {
+        display_messages(event.target, warning, 'Please enter passsword');
+        return
+    }
+    await call_api()
+    openlgBlock(event, 'n')
+}
+
+async function authenticate_user_otp(event, flow) {
+    let username = document.getElementById("lg_email_value").value
+    let user_otp = document.getElementById("lg_otp_value").value
+    let warning = document.querySelector("[otp-wrong-input-value]")
+    if (!user_otp) {
+        display_messages(event.target, warning, 'Please enter received OTP')
+        return
+    }
+    await call_api()
+    localStorage.setItem("_username_", username)
+    return window.location.href = 'http://127.0.0.1:5500/src/templates/space.main.html'
 }
 
 async function verifyOtp(event, flow) {
@@ -68,6 +105,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
     // Check for session storage
     let currentStep = sessionStorage.getItem("rg_status");
     let currentForm = sessionStorage.getItem("current_form");
+    let current_user = localStorage.getItem("_username_");
+    if (current_user) {
+        document.getElementById("lg_email_value").value = current_user;
+        document.getElementById("lg_password_value").focus()
+    }
     if (currentForm) {
         // document.querySelectorAll(".wrapper_form_active").forEach(item => {
         //     item.classList.remove("wrapper_form_active")
@@ -135,13 +177,11 @@ function checkCockie() {
     return enableRequiredBlock(c_obj)
 }
 async function sendOtp(event, flow) {
-    console.log("ijfei")
     let userId = document.querySelector('#onb_email_input')
-    console.log(userId.value)
+    let warning = document.querySelector('[rg-email-input-value]')
+
     if (!patterns().email.test(userId.value)) {
-        event.target.classList.toggle("wrong_input_highlight")
-        event.target.innerHTML = "Send OTP"
-        return
+        return display_messages(event.target, warning, 'Please enter correct email')
     }
     let userIdElement = document.querySelector('[user-unique-id]');
     if (userIdElement) {
