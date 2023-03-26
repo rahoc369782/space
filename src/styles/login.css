@@ -1,0 +1,299 @@
+.onboarding_content {
+    margin-top: calc(var(--g-header-height) + 70px)
+}
+
+.onboarding {
+    width: 100%;
+    user-select: none
+}
+
+[onboard-app-quote] {
+    font-size: var(--medium-font-size);
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space)
+}
+
+[onboard-app-title] {
+    padding: 10px 0;
+    font-size: var(--extralarge-font-size);
+    font-family: inter_ebold
+}
+
+/* .wrapper_middle_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit
+} */
+
+.wrapper_form_section {
+    margin: auto;
+    width: var(--wrapper-width);
+    max-width: var(--wrapper-width);
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(.9) translateY(-10px);
+    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
+}
+
+.wrapper_form_active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
+}
+
+.wrapper_form_section [form-title] {
+    font-size: var(--extralarge-font-size);
+    font-family: inter_bold;
+    padding-bottom: 10px
+}
+
+.wrapper_form_section .form_input {
+    width: 100%
+}
+
+.wrapper_form_section .form_input span {
+    cursor: pointer;
+    list-style: none;
+    color: var(--app-main-color);
+    font-size: 12px;
+    letter-spacing: .02em;
+    line-height: 1;
+    background: no-repeat;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: inter_regular
+}
+
+.wrapper_form_section .input_spacing {
+    margin-top: var(--margin-input)
+}
+
+.resend_otp_opt {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px
+}
+
+.wrapper_form_section .form_input input {
+    font-size: var(--small-font-size);
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--app-main-border);
+    border-radius: 3px;
+    padding: var(--input-btn-padding)
+}
+
+.wrapper_form_section .form_input input:focus {
+    transform: scale(1.05);
+    transition: transform .2s
+}
+
+[hide-user-existence],
+[show-user-existence] {
+    display: none
+}
+
+.wrapper_form_section .form_btn {
+    width: 100%
+}
+
+button a {
+    color: #fff
+}
+
+.wrapper_form_section .form_btn button {
+    cursor: pointer;
+    font-size: var(--small-font-size);
+    width: inherit;
+    border: 1px solid var(--app-main-border);
+    border-radius: 3px;
+    background-color: var(--app-main-color);
+    color: #fff;
+    padding: var(--input-btn-padding)
+}
+
+.wrapper_form_section .form_btn button:hover {
+    opacity: .9
+}
+
+.onboarding_content {
+    display: flex;
+    justify-content: center;
+    text-align: center
+}
+
+.onboarding_content span {
+    font-size: 12px;
+    color: #1d1d1f;
+    line-height: 1.4;
+    letter-spacing: .2px;
+    font-family: inter_regular
+}
+
+.onboarding_content span a {
+    font-size: 12px;
+    color: #1d1d1f;
+    line-height: .9;
+    letter-spacing: .2px;
+    cursor: pointer;
+    padding: 1px;
+    text-decoration: underline;
+    font-family: inter_medium
+}
+
+#onb_login_opt {
+    display: block
+}
+
+#registrationn_pointer {
+    color: var(--app-main-color);
+    cursor: pointer;
+    text-decoration: none
+}
+
+.input_group_block {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    height: 0px;
+    transform: scale(.9);
+    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
+}
+
+.active_lg_inputblock {
+    opacity: 1;
+    visibility: visible;
+    max-height: 1000px;
+    transform: scale(1);
+    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
+}
+
+/* Bounding Balls Animation */
+.dot-spinner {
+    display: inline-block
+}
+
+.dot-spinner {
+    margin-left: 5px
+}
+
+.dot-spinner div {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: white;
+    vertical-align: middle;
+    letter-spacing: -2px;
+}
+
+button .dot-spinner {
+    margin: 0;
+    padding: 0;
+    letter-spacing: -2px;
+}
+
+button .dot-spinner div {
+    background-color: var(--color-bg-default);
+}
+
+.dot-spinner div:first-child {
+    -webkit-transform: translate(-5px);
+    transform: translate(-5px);
+    -webkit-animation: dot-spinner-ani2 .5s linear infinite;
+    animation: dot-spinner-ani2 .5s linear infinite;
+    opacity: 0
+}
+
+.dot-spinner div:nth-child(2),
+.dot-spinner div:nth-child(3) {
+    -webkit-animation: dot-spinner-ani3 .5s linear infinite;
+    animation: dot-spinner-ani3 .5s linear infinite
+}
+
+.dot-spinner div:last-child {
+    -webkit-animation: dot-spinner-ani1 .5s linear infinite;
+    animation: dot-spinner-ani1 .5s linear infinite
+}
+
+@-webkit-keyframes dot-spinner-ani1 {
+    to {
+        -webkit-transform: translate(10px);
+        transform: translate(10px);
+        opacity: 0
+    }
+}
+
+@keyframes dot-spinner-ani1 {
+    to {
+        -webkit-transform: translate(10px);
+        transform: translate(10px);
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes dot-spinner-ani2 {
+    to {
+        -webkit-transform: translate(5px);
+        transform: translate(5px);
+        opacity: 1
+    }
+}
+
+@keyframes dot-spinner-ani2 {
+    to {
+        -webkit-transform: translate(5px);
+        transform: translate(5px);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes dot-spinner-ani3 {
+    to {
+        -webkit-transform: translate(5px);
+        transform: translate(5px)
+    }
+}
+
+@keyframes dot-spinner-ani3 {
+    to {
+        -webkit-transform: translate(5px);
+        transform: translate(5px)
+    }
+}
+
+/* Bouncing Balls End */
+
+/* Wrong input animation */
+
+@-webkit-keyframes dot-spinner-ani3 {
+    from {
+        -webkit-transform: translate(-10px);
+        transform: translateX(-10px);
+    }
+
+    to {
+        -webkit-transform: translate(10px);
+        transform: translate(10px)
+    }
+}
+
+@keyframes wrong-input {
+    from {
+        -webkit-transform: translate(-12px);
+        transform: translateX(-12px);
+    }
+
+    to {
+        -webkit-transform: translate(12px);
+        transform: translate(12px)
+    }
+}
+
+.wrong_input span {
+    font-size: var(--small-font-size);
+    color: var(--app-warning-color)
+}

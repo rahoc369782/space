@@ -9,65 +9,6 @@
     -g-nav-height: 45px;
 }
 
-body {
-    position: relative;
-}
-
-@keyframes overlay_panel {
-    100% {
-        height: 60%;
-    }
-
-    /* 
-    20% {
-        height: 30%;
-
-    }
-
-    30% {
-        height: 30%;
-
-    }
-
-    40% {
-        height: 40%;
-
-    }
-
-    50% {
-        height: 50%;
-
-    }
-
-    60% {
-        height: 60%;
-
-    }
-
-    70% {
-        height: 70%;
-
-    }
-
-    80% {
-        height: 80%;
-
-    }
-
-    90% {
-        height: 90%;
-
-    }
-
-    100% {
-        height: 100%;
-
-    } */
-
-}
-
-
-
 
 .global_header_container {
     position: sticky;
@@ -220,29 +161,6 @@ a {
     padding: 0 20px
 }
 
-.g_header_navbar_wrapper .dropdown_menu {
-    padding: .75rem;
-    border-radius: .25rem;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
-    position: absolute;
-    top: calc(100% + 0.1rem);
-    left: 0;
-    background: white;
-    width: 200px;
-    height: auto;
-    letter-spacing: .01rem;
-    line-height: 1.8rem;
-    opacity: 0;
-    transform: scale(.2, 0) translateY(-20px);
-    transition: opacity 150ms ease-in-out, transform 300ms ease-in-out;
-}
-
-.active_dropdown {
-    opacity: 1 !important;
-    transform: scale(1) translateY(0) !important;
-    /* transition: opacity 150ms ease-in-out,transform 500ms ease-in-out; */
-}
-
 .advertising_strip_container {
     background-color: #f1f1f1;
     border: 1px solid #eee;
@@ -264,8 +182,8 @@ a {
 }
 
 .strip_animation {
-    animation: strip_animations 800ms ease-in-out;
-    animation-delay: 0s;
+    /* animation: strip_animations 800ms ease-in-out;
+    animation-delay: 0s; */
 }
 
 .advertising_strip_container span {

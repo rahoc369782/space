@@ -21,6 +21,15 @@ body {
     --large-font-size: 16px;
     --extralarge-font-size: 22px;
     --color-bg-default: white;
+    --wrapper-width: 280px;
+    --mainlinks-width: 650px;
+    --input-height: 20px;
+    --input-btn-padding: 10px;
+    --margin-input: 15px;
+    --minwidth-bottom-links-tabs: 90px;
+    --g-header-height: 40px;
+    --warapper-animation-duration: 240ms;
+    --app-warning-color: rgb(235, 87, 87);
 }
 
 
