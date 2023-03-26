@@ -80,11 +80,6 @@
     padding: var(--input-btn-padding)
 }
 
-.wrapper_form_section .form_input input:focus {
-    transform: scale(1.05);
-    transition: transform .2s
-}
-
 .wrapper_form_section .form_btn {
     width: 100%
 }
