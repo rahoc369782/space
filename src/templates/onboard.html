@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Space</title>
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" href="../styles/onboard.css">
+    <link rel="stylesheet preload" as="fonts" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet preload prefetch" as="style" href="../styles/sp_nav.css">
+    <script src="../scripts/onboarding.js">
+    </script>
+
+</head>
+
+<body>
+    <nav class="main_imp_links">
+        <div class="main_links_wrapper">
+            <div class="imp_page_links">
+                <a href="">Who we are</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">About us</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Our values</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Contact us</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Conditions</a>
+            </div>
+            <div class="imp_page_links">
+                <a href="">Updates</a>
+            </div>
+        </div>
+    </nav>
+    <main class="onboarding_content">
+        <div class="useronboard_wrapper">
+            <div class="wrapper_middle_section">
+                <div onboarding-login-form-container class="wrapper_form_section">
+                    <div class="input_blocks_flow_container">
+                        <div onb-lg-userid-block class="input_group_block active_lg_inputblock">
+                            <div>
+                                <!-- <h4>Continue with...</h4> -->
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input autofocus btn="onb-password-btn" id="lg_email_value" common-input
+                                    placeholder="Your Email / Username / Mobile" type="email">
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-password-btn" common-input id="lg_password_value"
+                                    placeholder="Your Password" type="password">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-password-btn onclick="authenticate_user(event,'n')" onb-lg-email-btn>
+                                    Verify
+                                </button>
+                            </div>
+                            <div class="wrong_input input_spacing">
+                                <span auth-wrong-input-value></span>
+                            </div>
+                        </div>
+                        <div onb-otp-block class="input_group_block">
+                            <div>
+                                <h3>Enter OTP sent</h3>
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-lg-otp-btn" id="lg_otp_value" common-input placeholder="Enter OTP"
+                                    type="number">
+                                <div class="resend_otp_opt">
+                                    <span>Resend OTP</span>
+                                </div>
+
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-lg-otp-btn type="submit" onclick="authenticate_user_otp(event,'n')"
+                                    onb-otp-btn>Continue</button>
+                            </div>
+                            <div class="wrong_input input_spacing">
+                                <span otp-wrong-input-value></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="onboarding_content input_spacing">
+                        <span>New in space <a onclick="openFormWrapper('login','register')"
+                                id="registrationn_pointer">Register here</a>
+                            </a></span>
+
+                    </div>
+
+                </div>
+                <div onboarding-register-form-container class="wrapper_form_section ">
+                    <div class="input_blocks_flow_container">
+                        <div onb-rg-userid-block class="input_group_block active_rg_inputblock">
+                            <div>
+
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-email-btn" common-input id="onb_email_input"
+                                    placeholder="Your Email / Number" type="email">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-email-btn page=rg-userid-btn onclick="sendOtp(event,'n')"
+                                    onb-email-btn>Send OTP</button>
+                            </div>
+                            <div id="onb_login_opt" class="onboarding_content input_spacing">
+                                <span>Already a member <a onclick="openFormWrapper('register','login')"
+                                        id="registrationn_pointer">Login
+                                        here</a></span>
+                            </div>
+                            <div class="wrong_input input_spacing">
+                                <span rg-email-input-value></span>
+                            </div>
+                        </div>
+
+                        <div onb-rg-otp-block class="input_group_block">
+                            <div class="wrapper_other_onboardinopt">
+                                <span user-unique-id></span>
+                                <label onclick="openrgBlock(event, 'p')">Change</label>
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-otp-btn" common-input placeholder="Enter OTP" type="number">
+                                <div class="resend_otp_opt">
+                                    <span>Resend OTP</span>
+                                </div>
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-otp-btn onclick="verifyOtp(event,'n')" onb-otp-btn>Verify</button>
+                            </div>
+                        </div>
+                        <div onb-rg-password-block class="input_group_block">
+                            <div></div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-password-btn" common-input onb-password-input
+                                    placeholder="Set Password" type="text">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-password-btn onclick="setPassword(event,'n')"
+                                    onb-email-btn>Continue</button>
+                            </div>
+                        </div>
+                        <div onb-rg-username-block class="input_group_block">
+                            <div></div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-username-btn" common-input placeholder="Set Username" type="text">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-username-btn onclick="setUsername(event,'n')">Continue</button>
+                            </div>
+                        </div>
+                        <div onb-rg-personal-block class="input_group_block">
+                            <div></div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-personal-btn" common-input onb-username-input placeholder="Your DOB"
+                                    type="text">
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-personal-btn" common-input onb-username-input
+                                    placeholder="Your Gender" type="text">
+                            </div>
+                            <div class="form_input input_spacing">
+                                <input btn="onb-rg-personal-btn" common-input onb-username-input
+                                    placeholder="Your Profession" type="text">
+                            </div>
+                            <div class="form_btn input_spacing">
+                                <button onb-rg-personal-btn onclick="setPersonalinfo(event,'n')">Let's
+                                    Go</button>
+                            </div>
+                        </div>
+                        <div onb-rg-done-block class="input_group_block">
+                            <div class="welcome_content">
+                                <h3 class="account_created">Welcome</h3>
+                                <p class="account_created_content">Your account is created successfully. One last step
+                                    is remaining to activate your account. We Promise that your this small investment
+                                    will worth a lot! & add value in your life.</p>
+                                <div class="form_btn input_spacing">
+                                    <button onb-rg-personal-btn common-input><a title="plans_page"
+                                            href="./space_plans.html" target="_blank">FINISH
+                                            UP</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    
+</body>
+
+</html>
