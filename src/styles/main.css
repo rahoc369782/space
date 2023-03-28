@@ -9,6 +9,7 @@ body {
     --app-main-color: #0c74df;
     --app-main-back-color: #F2F1EE;
     --app-secondary-back-color: #F0F0F0;
+    --app-success-background: #14A44D;
     --app-main-border: #EEEEEE;
     --main-font-color: #1d1d1f;
     --main-font-secondary-color: #424245;
@@ -22,13 +23,14 @@ body {
     --extralarge-font-size: 22px;
     --color-bg-default: white;
     --wrapper-width: 280px;
+    --web-wrapper-width: 1000px;
     --mainlinks-width: 650px;
     --input-height: 20px;
     --input-btn-padding: 10px;
     --margin-input: 15px;
     --minwidth-bottom-links-tabs: 90px;
     --g-header-height: 40px;
-    --warapper-animation-duration: 240ms;
+    --warapper-animation-duration: 350ms;
     --app-warning-color: rgb(235, 87, 87);
 }
 

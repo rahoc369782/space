@@ -1,3 +1,4 @@
-let monthly_plans = [
-    { timelines: 5,feature:"Each timeline can store unlimited moments.", desc: "You can create 5 timelines as per your trquirements.",price:"120Rs" },
-]
+window.addEventListener('DOMContentLoaded', () => {
+    let account_msg = document.querySelector('[account-status-msg]')
+    account_msg.innerText = `Welcome ${sessionStorage.getItem("_username_")}, your account is created successfully`
+})

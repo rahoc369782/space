@@ -61,10 +61,13 @@
             </div>
         </nav>
     </div>
-    <div class="advertising_strip_container strip_animation">
+    <div regular-status-strip class="advertising_strip_container strip_animation">
         <span>The advertising and important points will go here.</span>
     </div>
-    <main class="onboarding">
+    <div process-status-strip class="account_activated_warning">
+        <span account-status-msg></span>
+    </div>
+    <main class="onboarding_content">
         <div class="wrapper_middle_section">
             <div register-form class="wrapper_form_section">
                 <div class="input_blocks_flow_container">
@@ -95,7 +98,7 @@
                             <label onclick="openrgBlock(event, 'p')">Change</label>
                         </div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-rg-otp-btn" common-input placeholder="Enter OTP" type="number">
+                            <input autofocus btn="onb-rg-otp-btn" common-input placeholder="Enter OTP" type="number">
                             <div class="resend_otp_opt">
                                 <span>Resend OTP</span>
                             </div>
@@ -107,8 +110,8 @@
                     <div onb-rg-password-block class="input_group_block">
                         <div></div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-rg-password-btn" common-input onb-password-input placeholder="Set Password"
-                                type="text">
+                            <input autofocus btn="onb-rg-password-btn" common-input onb-password-input
+                                placeholder="Set Password" type="text">
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-rg-password-btn onclick="setPassword(event,'n')" onb-email-btn>Continue</button>
@@ -117,7 +120,8 @@
                     <div onb-rg-username-block class="input_group_block">
                         <div></div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-rg-username-btn" common-input placeholder="Set Username" type="text">
+                            <input autofocus id="rg_username_value" btn="onb-rg-username-btn" common-input
+                                placeholder="Set Username" type="text">
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-rg-username-btn onclick="setUsername(event,'n')">Continue</button>
@@ -126,8 +130,8 @@
                     <div onb-rg-personal-block class="input_group_block">
                         <div></div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-rg-personal-btn" common-input onb-username-input placeholder="Your DOB"
-                                type="text">
+                            <input autofocus btn="onb-rg-personal-btn" common-input onb-username-input
+                                placeholder="Your DOB" type="text">
                         </div>
                         <div class="form_input input_spacing">
                             <input btn="onb-rg-personal-btn" common-input onb-username-input placeholder="Your Gender"
@@ -142,19 +146,19 @@
                                 Go</button>
                         </div>
                     </div>
-                    <div onb-rg-done-block class="input_group_block">
-                        <div class="welcome_content">
-                            <h3 class="account_created">Welcome</h3>
-                            <p class="account_created_content">Your account is created successfully. One last step
-                                is remaining to activate your account. We Promise that your this small investment
-                                will worth a lot! & add value in your life.</p>
-                            <div class="form_btn input_spacing">
-                                <button onb-rg-personal-btn common-input><a title="plans_page" href="./space_plans.html"
-                                        target="_blank">FINISH
-                                        UP</a>
-                            </div>
-                        </div>
-                    </div>
+
+                </div>
+
+
+            </div>
+            <div onb-rg-done-block>
+                <div class="welcome_content">
+                    <h3 class="account_created">Start new journey of understanding & enjoying each step of your life in
+                        simple way.</h3>
+                    <p class="account_created_content">Your account is created successfully. <a
+                            href="./plans.html">Selct Plan</a> to
+                        activate your account. We Promise that your this small investment
+                        will worth a lot! & add value in your life.</p>
                 </div>
             </div>
         </div>

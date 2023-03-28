@@ -19,7 +19,6 @@ function apply_keypress_event() {
             let cur_btn = document.querySelector(`[${input.getAttribute("btn")}]`)
             if (e.keyCode === 13) {
                 if (cur_btn) {
-                    cur_btn.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
                     cur_btn.click()
                 }
             }
@@ -38,22 +37,29 @@ function display_messages(btn, element, message) {
 }
 
 async function authenticate_user(event, flow) {
+    event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
+    event.target.disabled = true
     let username = document.getElementById("lg_email_value").value
     let password = document.getElementById("lg_password_value").value
     let warning = document.querySelector("[auth-wrong-input-value]")
     if (!username) {
-        display_messages(event.target, warning, 'Please enter valid username')
+        event.target.innerHTML = 'Login'
+        display_messages(event.target, warning, 'Please enter valid username',)
         return
     }
     if (!password) {
+        event.target.innerHTML = 'Login'
         display_messages(event.target, warning, 'Please enter passsword');
         return
     }
     await call_api()
+    event.target.innerHTML = 'Login'
     openlgBlock(event, 'n')
 }
 
 async function authenticate_user_otp(event, flow) {
+    console.log("sdsdsd")
+    event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
     let username = document.getElementById("lg_email_value").value
     let user_otp = document.getElementById("lg_otp_value").value
     let warning = document.querySelector("[otp-wrong-input-value]")

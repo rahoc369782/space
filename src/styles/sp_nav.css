@@ -164,7 +164,7 @@ a {
 .advertising_strip_container {
     background-color: #f1f1f1;
     border: 1px solid #eee;
-    height: 40px;
+    height: 0px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -181,9 +181,24 @@ a {
     }
 }
 
+@keyframes plans_strip_animations {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 100px;
+    }
+}
+
 .strip_animation {
-    /* animation: strip_animations 800ms ease-in-out;
-    animation-delay: 0s; */
+    animation: strip_animations 800ms ease-in-out forwards;
+    animation-delay: 1.4s;
+}
+
+.plans_strip {
+    animation: plans_strip_animations 800ms ease-in-out forwards;
+    animation-delay: 1s;
 }
 
 .advertising_strip_container span {
@@ -191,7 +206,7 @@ a {
     opacity: 0;
     color: #1d1d1f;
     animation: display_strip_content 400ms ease-in-out forwards;
-    animation-delay: .8s;
+    animation-delay: 2.1s;
 }
 
 @keyframes display_strip_content {

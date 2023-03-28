@@ -1,0 +1,137 @@
+:root {
+    --content-space: 30px
+}
+
+.main_section {}
+
+/* .content .content_wrapper {
+    max-width: var(--web-wrapper-width);
+    margin: auto;
+} */
+
+.content .content_wrapper .plans_hero_headline {
+    font-size: 50px;
+    line-height: 1.07;
+    letter-spacing: .8px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-align: center;
+    margin: var(--content-space) 0px;
+    color: var(--main-font-color);
+}
+
+.content .content_wrapper .plans_intro_content {
+    max-width: var(--web-wrapper-width);
+    margin: auto auto;
+}
+
+.content .content_wrapper .plans_hero_content {
+    margin: var(--content-space) auto;
+    max-width: 700px;
+}
+
+.next_block {
+    margin: 50px 0px 40px 0px;
+}
+
+.theme_dark {
+    background-color: black;
+    padding: 30px;
+    max-width: 100% !important;
+}
+
+.plans_intro_dark_theme {
+    color: white !important;
+}
+
+.content_flex_box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.content .content_wrapper .plans_hero_content p {
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.4211026316;
+    letter-spacing: .011em;
+    color: var(--main-font-secondary-color);
+}
+
+.content .content_wrapper .plans_hero_content span {
+    font-weight: 600;
+}
+
+.product_overview_img {
+    display: flex;
+    justify-content: center;
+}
+
+.product_overview_img img {
+    width: auto;
+}
+
+.plans_content_blocks_wrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    background-color: var(--app-main-back-color);
+}
+
+.plans_content_blocks_wrapper h2 {
+    font-size: 30px !important;
+}
+
+.flex_container {
+    flex: .5;
+    padding: 50px;
+    /* background-color: var(--app-main-back-color); */
+    margin-top: 15px !important;
+}
+
+/* Plans and account activating css */
+
+@keyframes strip_animations {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 40px;
+    }
+}
+
+.account_activated_warning {
+    background-color: var(--app-success-background);
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: strip_animations 800ms ease-in-out forwards;
+    animation-delay: 0s;
+}
+
+.account_activated_warning span {
+    font-size: var(--small-font-size);
+    opacity: 0;
+    color: white;
+    animation: display_strip_content 400ms ease-in-out forwards;
+    animation-delay: .8s;
+}
+
+@keyframes display_strip_content {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.account_activated {
+    background-color: var(--app-success-background);
+    color: white;
+    height: 40px;
+    transition: height 200ms ease-in-out;
+}

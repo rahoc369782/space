@@ -1,6 +1,5 @@
-.onboarding {
-    width: 100%;
-    user-select: none
+.onboarding_content {
+    margin-top: calc(var(--g-header-height) + 40px)
 }
 
 .wrapper_middle_section {
@@ -17,21 +16,25 @@
     max-width: var(--wrapper-width);
     visibility: hidden;
     opacity: 0;
+    max-height: 0px;
     transform: scale(.9) translateY(-10px);
-    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
+    transition: max-height var(--warapper-animation-duration), opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
 }
 
 .wrapper_form_active {
     visibility: visible;
     opacity: 1;
+    max-height: 500px;
     transform: scale(1) translateY(0px);
-    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
+    transition: max-height var(--warapper-animation-duration), opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
 }
 
 .input_group_block {
     opacity: 0;
     visibility: hidden;
     max-height: 0;
+    position: absolute;
+    width: 100%;
     transform: scale(.9);
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
 }
@@ -39,6 +42,7 @@
 .active_rg_inputblock {
     visibility: visible;
     opacity: 1;
+    position: unset;
     max-height: 1000px;
     transform: scale(1);
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
@@ -160,20 +164,83 @@ button a {
     font-weight: 500
 }
 
+@keyframes disable_form {
+    from {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1) translateY(0px);
+    }
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+        transform: scale(.8) translateY(-100px);
+    }
+}
+
+.disable_register_form {
+    animation: disable_form 200ms forwards;
+    /* transition: transform var(--warapper-animation-duration), opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration); */
+}
+
 .wrapper_other_onboardinopt label:hover {
     color: coral
 }
 
-.account_created {
-    text-align: center
+[onb-rg-done-block] {
+    width: var(--mainlinks-width);
+    margin: auto;
+    position: absolute;
+    visibility: hidden;
+    transition: position 300ms, visibility 300ms;
+    transition-delay: calc(var(--warapper-animation-duration) * 2 + 300ms);
+    /* display: none; */
 }
+
+.onb_rg_done_activate {
+    position: unset;
+    visibility: visible;
+}
+
+@keyframes welcome_content {
+    from {
+        transform: translateY(200px);
+        opacity: .5;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+[onb-rg-done-block] .account_created {
+    text-align: start;
+    font-size: 50px;
+    opacity: 0;
+    margin: var(--margin-input);
+    animation: welcome_content .5s forwards;
+    animation-delay: 3s;
+}
+
 
 .account_created_content {
     color: var(--main-font-third-color);
-    text-align: center;
-    font-size: var(--small-font-size);
+    text-align: start;
+    font-size: var(--large-font-size);
     line-height: var(--app-line-height);
-    letter-spacing: var(--app-letter-space)
+    letter-spacing: var(--app-letter-space);
+    padding: 20px;
+    animation: welcome_content .5s forwards;
+    animation-delay: 3s;
+}
+
+.account_created_content a {
+    font-family: inter_medium;
+    text-decoration: underline;
+    color: var(--main-font-third-color);
+
 }
 
 @-webkit-keyframes dot-spinner-ani1 {
@@ -371,4 +438,58 @@ button .dot-spinner div {
         -webkit-transform: translate(12px);
         transform: translate(12px)
     }
+}
+
+/* Plans and account activating css */
+
+@keyframes strip_animations {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 40px;
+    }
+}
+
+.account_activated_warning {
+    background-color: var(--app-success-background);
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0px;
+    overflow: hidden;
+    transition: height var(--warapper-animation-duration) ease-in-out;
+    transition-delay: calc(var(--warapper-animation-duration) + 150ms);
+    /* animation: strip_animations 800ms ease-in-out forwards;
+    animation-delay: 0s; */
+}
+
+.account_activated_warning span {
+    font-size: var(--small-font-size);
+    opacity: 1;
+    color: white;
+    /* animation: display_strip_content 400ms ease-in-out forwards;
+    animation-delay: .8s; */
+    transition: opacity 1200ms;
+    animation-delay: 1s;
+}
+
+/* 
+@keyframes display_strip_content {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+} */
+
+.account_activated {
+    background-color: var(--app-success-background);
+    color: white;
+    height: 40px;
 }
