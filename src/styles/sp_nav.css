@@ -6,7 +6,7 @@
 }
 
 :root {
-    -g-nav-height: 45px;
+    --g-nav-height: 45px;
 }
 
 
@@ -26,8 +26,8 @@
     max-width: 1024px;
     width: 100%;
     margin: auto;
-    height: 45px;
-    max-height: 45px;
+    height: var(--g-nav-height);
+    max-height: var(--g-nav-height);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -266,44 +266,6 @@ main {
     /* transition: opacity .4s ease, visibility 4s */
 }
 
-.nav_flyers_inner_wrapper {
-    position: absolute;
-    top: cal(var(--g-nav-height) - 10px);
-    left: 0;
-    right: 0;
-    background-color: #fbfbfa;
-    max-height: 0px;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    overflow: hidden;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    backdrop-filter: blur(18px) saturate(10%);
-    transition: max-height 200ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 150ms, visibility 100ms;
-}
-
-.nav_flyer_active {
-    max-height: calc(100vh - 20vh);
-    visibility: visible;
-    opacity: 1;
-    transition: max-height 260ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 320ms, visibility 300ms;
-}
-
-.nav_flyers_inner_wrapper .nav_flyer_inner_sub_wrapper {
-    width: var(--global-nav-width);
-    max-width: var(--global-nav-width);
-    padding: 38px 20px 50px 20px;
-}
-
-.nav_flyers_inner_wrapper .nav_flyer_inner_sub_wrapper .f_n {
-    /* background-color: red; */
-    opacity: 1;
-    overflow: hidden;
-    transition: height 450ms, opacity .3s;
-    transition-delay: 1300ms;
-}
 
 .nav_flyers_inner_wrapper .nav_flyer_inner_sub_wrapper .f_n li {
     margin-bottom: 15px;

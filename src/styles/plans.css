@@ -1,5 +1,7 @@
 :root {
-    --content-space: 30px
+    --content-space: 30px;
+    --plans-strip-height:100px;
+    --g-nav-height:45px;
 }
 
 .main_section {}
@@ -90,20 +92,27 @@
 
 /* Plans and account activating css */
 
-@keyframes strip_animations {
+@keyframes plans_strip_animations {
     from {
         height: 0px;
     }
 
     to {
-        height: 40px;
+        height: var(--plans-strip-height);
     }
+}
+
+
+.plans_strip {
+    animation: plans_strip_animations 800ms ease-in-out forwards;
+    animation-delay: 1s;
 }
 
 .account_activated_warning {
     background-color: var(--app-success-background);
     color: white;
     width: 100%;
+    z-index: 200;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,4 +143,37 @@
     color: white;
     height: 40px;
     transition: height 200ms ease-in-out;
+}
+
+/* Dropdown weapper css */
+
+.nav_flyers_inner_wrapper {
+    position: absolute;
+    top: 145px;
+    left: 0;
+    right: 0;
+    background-color: #fbfbfa;
+    max-height: 0px;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(18px) saturate(10%);
+    transition: max-height 200ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 150ms, visibility 100ms;
+}
+
+.nav_flyer_active {
+    max-height: calc(100vh - 20vh);
+    visibility: visible;
+    opacity: 1;
+    transition: max-height 260ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 320ms, visibility 300ms;
+}
+
+.nav_flyers_inner_wrapper .nav_flyer_inner_sub_wrapper {
+    width: var(--global-nav-width);
+    max-width: var(--global-nav-width);
+    padding: 38px 20px 50px 20px;
 }
