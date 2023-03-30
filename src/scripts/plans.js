@@ -1,6 +1,14 @@
-window.addEventListener('DOMContentLoaded', () => {
-    let account_msg = document.querySelector('[account-status-msg]')
-    account_msg.innerText = `Welcome ${sessionStorage.getItem("_username_")}, your account is created successfully`
+function changes_in_css_vars(var_key, value) {
+    var css_vars = document.querySelector(':root');
+    css_vars.style.setProperty(var_key, value - 3 + 'px');
+    return;
+}
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        let plans_wrapper_height = document.querySelector('[g-strip-container]')
+        changes_in_css_vars('--plans-strip-actual-height', plans_wrapper_height.clientHeight)
+    }, 2000)
+
 })
 
 document.addEventListener("mouseover", async (e) => {
@@ -21,8 +29,8 @@ document.addEventListener("mouseover", async (e) => {
             //document.querySelector("[activate-navbar-flyer=true]").classList.add("nav_flyer_active")
             return
         }
+        return
     }
-
     // Means Outside g-nav-container but not on nav_tab_element
     document.querySelectorAll("[g-navbar-flyer]").forEach(ele => {
         ele.classList.remove("nav_flyer_active")

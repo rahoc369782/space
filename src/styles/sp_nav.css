@@ -163,7 +163,7 @@ a {
 
 .advertising_strip_container {
     background-color: #f1f1f1;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
     height: 0px;
     width: 100%;
     display: flex;

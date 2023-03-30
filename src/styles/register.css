@@ -49,7 +49,8 @@
 }
 
 .wrapper_form_section .form_input {
-    width: 100%
+    width: 100%;
+    position: relative;
 }
 
 .wrapper_form_section .form_input span {
@@ -221,26 +222,26 @@ button a {
     opacity: 0;
     margin: var(--margin-input);
     animation: welcome_content .5s forwards;
-    animation-delay: 3s;
+    animation-delay: 1.2s;
 }
 
 
 .account_created_content {
     color: var(--main-font-third-color);
     text-align: start;
+    opacity: 0;
     font-size: var(--large-font-size);
     line-height: var(--app-line-height);
     letter-spacing: var(--app-letter-space);
     padding: 20px;
     animation: welcome_content .5s forwards;
-    animation-delay: 3s;
+    animation-delay: 1.8s;
 }
 
 .account_created_content a {
     font-family: inter_medium;
     text-decoration: underline;
-    color: var(--main-font-third-color);
-
+    color: #0071e3;
 }
 
 @-webkit-keyframes dot-spinner-ani1 {
@@ -414,7 +415,7 @@ button .dot-spinner div {
 
 /* Bouncing Balls End */
 
-/* Wrong input animation */
+
 
 @-webkit-keyframes dot-spinner-ani3 {
     from {
@@ -477,19 +478,23 @@ button .dot-spinner div {
     animation-delay: 1s;
 }
 
-/* 
-@keyframes display_strip_content {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-} */
-
 .account_activated {
     background-color: var(--app-success-background);
     color: white;
     height: 40px;
+}
+
+/* Wrong input animation */
+@keyframes wrong_input {
+    from {
+        transform: translateX(20px);
+    }
+
+    to {
+        transform: translateX(-20px);
+    }
+}
+
+.wrong_input_highlight {
+    animation: wrong_input 100ms ease-in-out;
 }

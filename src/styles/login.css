@@ -153,6 +153,7 @@ button a {
     opacity: 0;
     visibility: hidden;
     max-height: 0;
+    position: absolute;
     height: 0px;
     transform: scale(.9);
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
@@ -161,6 +162,7 @@ button a {
 .active_lg_inputblock {
     opacity: 1;
     visibility: visible;
+    position: unset;
     max-height: 1000px;
     transform: scale(1);
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
@@ -291,4 +293,19 @@ button .dot-spinner div {
 .wrong_input span {
     font-size: var(--small-font-size);
     color: var(--app-warning-color)
+}
+
+/* Wrong input animation */
+@keyframes wrong_input {
+    from {
+        transform: translateX(20px);
+    }
+
+    to {
+        transform: translateX(-20px);
+    }
+}
+
+.wrong_input_highlight {
+    animation: wrong_input 100ms ease-in-out;
 }

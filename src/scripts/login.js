@@ -20,6 +20,8 @@ function apply_keypress_event() {
             if (e.keyCode === 13) {
                 if (cur_btn) {
                     cur_btn.click()
+                    cur_btn.style.opacity = .6
+                    cur_btn.style.cursor = 'not-allowed'
                 }
             }
         })
@@ -28,7 +30,6 @@ function apply_keypress_event() {
 
 function display_messages(btn, element, message) {
     element.innerText = message;
-    btn.innerText = 'Continue'
     btn.classList.add("wrong_input_highlight")
     setTimeout(() => {
         btn.classList.remove("wrong_input_highlight")
@@ -45,14 +46,17 @@ async function authenticate_user(event, flow) {
     if (!username) {
         event.target.innerHTML = 'Login'
         display_messages(event.target, warning, 'Please enter valid username',)
+        event.target.disabled = false
         return
     }
     if (!password) {
         event.target.innerHTML = 'Login'
         display_messages(event.target, warning, 'Please enter passsword');
+        event.target.disabled = false
         return
     }
     await call_api()
+    event.target.disabled = false
     event.target.innerHTML = 'Login'
     openlgBlock(event, 'n')
 }

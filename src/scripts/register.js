@@ -71,21 +71,25 @@ async function setUsername(event, flow) {
     openrgBlock(event, flow)
 }
 
-async function setPersonalinfo(event, flow) {
-    event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
-    await call_api()
-    // sessionStorage.setItem("rg_status", "done")
-    // document.querySelector('[register-form]').style.display = 'none'
+function activate_rg_done() {
     let account_msg = document.querySelector('[account-status-msg]')
     let welcome_block = document.querySelector('[onb-rg-done-block]')
     let register_form = document.querySelector('[register-form]')
     account_msg.innerText = `Welcome ${sessionStorage.getItem("_username_")}, your account is created successfully`
     register_form.classList.remove('wrapper_form_active')
-    event.target.innerHTML = 'Continue'
     document.querySelector('[regular-status-strip]').style.display = 'none'
     let activation_strip = document.querySelector('[process-status-strip]')
     activation_strip.classList.add('account_activated')
     welcome_block.classList.add('onb_rg_done_activate')
+}
+
+async function setPersonalinfo(event, flow) {
+    event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
+    await call_api()
+    // sessionStorage.setItem("rg_status", "done")
+    // document.querySelector('[register-form]').style.display = 'none'
+    activate_rg_done()
+    event.target.innerHTML = 'Continue'
     // setTimeout(() => {
     //     activation_strip.classList.remove('account_activated')
     // }, 10000)
@@ -94,9 +98,13 @@ async function setPersonalinfo(event, flow) {
 
 window.addEventListener("DOMContentLoaded", (e) => {
     // Check for session storage
-    document.querySelector('[register-form]').classList.add('wrapper_form_active')
     let currentStep = sessionStorage.getItem("rg_status");
+    console.log(currentStep)
+    if (currentStep === 'done') {
+        return activate_rg_done()
+    }
     if (currentStep) {
+        document.querySelector('[register-form]').classList.add('wrapper_form_active')
         document.querySelectorAll(".active_rg_inputblock").forEach(item => {
             item.classList.remove("active_rg_inputblock")
         })
@@ -106,6 +114,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             enabledBlock.classList.add("active_rg_inputblock")
         }
     }
+    document.querySelector('[register-form]').classList.add('wrapper_form_active')
     apply_keypress_event()
 })
 
@@ -114,7 +123,7 @@ async function sendOtp(event, flow) {
     let userId = document.querySelector('#onb_email_input')
     let warning = document.querySelector('[rg-email-input-value]')
     if (!patterns().email.test(userId.value)) {
-        event.target.innerHTML = 'send OTP'
+        event.target.innerHTML = 'Send OTP'
         return display_messages(event.target, warning, 'Please enter correct email')
     }
     let userIdElement = document.querySelector('[user-unique-id]');
@@ -122,7 +131,7 @@ async function sendOtp(event, flow) {
         userIdElement.innerText = userId.value
     }
     await call_api()
-    event.target.innerHTML = 'send OTP'
+    event.target.innerHTML = 'Send OTP'
     openrgBlock(event, flow)
 }
 
