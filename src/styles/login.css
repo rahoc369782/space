@@ -7,6 +7,13 @@
     user-select: none
 }
 
+.common_container {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: opacity 300ms;
+}
+
 [onboard-app-quote] {
     font-size: var(--medium-font-size);
     line-height: var(--app-line-height);
@@ -46,12 +53,11 @@
 
 .wrapper_form_section [form-title] {
     font-size: var(--extralarge-font-size);
-    font-family: inter_bold;
     padding-bottom: 10px
 }
 
 .wrapper_form_section .form_input {
-    width: 100%
+    width: 100%;
 }
 
 .wrapper_form_section .form_input span {
@@ -64,7 +70,7 @@
     background: no-repeat;
     text-decoration: none;
     white-space: nowrap;
-    font-family: inter_regular
+    font-weight: 400;
 }
 
 .wrapper_form_section .input_spacing {
@@ -83,12 +89,53 @@
     box-sizing: border-box;
     border: 1px solid var(--app-main-border);
     border-radius: 3px;
-    padding: var(--input-btn-padding)
+    padding: var(--input-btn-padding);
 }
 
-[hide-user-existence],
-[show-user-existence] {
-    display: none
+.input_partitioned {
+    /* padding-left: 15px; */
+    letter-spacing: 22px;
+    /* border: 0; */
+    background-position: center;
+    background-repeat: repeat-x;
+    /* background-position-x: 35px; */
+    font-weight: 500;
+}
+
+input[type='password'] {
+    font-family: Verdana;
+    letter-spacing: .25em;
+    opacity: .9;
+}
+
+.login_opts {
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session_opt_block {
+    display: flex;
+    align-items: center;
+}
+
+.session_opt_block label,
+input {
+    cursor: pointer;
+    font-size: var(--small-font-size);
+    color: var(--main-font-secondary-color);
+}
+
+.login_opts span {
+    color: var(--app-main-color);
+    font-size: var(--small-font-size);
+    letter-spacing: var(--app-letter-space);
+    cursor: pointer;
+}
+
+.login_opts span:hover {
+    text-decoration: underline;
 }
 
 .wrapper_form_section .form_btn {
@@ -96,7 +143,8 @@
 }
 
 button a {
-    color: #fff
+    color: #fff;
+    font-weight: 600;
 }
 
 .wrapper_form_section .form_btn button {
@@ -107,7 +155,9 @@ button a {
     border-radius: 3px;
     background-color: var(--app-main-color);
     color: #fff;
-    padding: var(--input-btn-padding)
+    padding: var(--input-btn-padding);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 
 .wrapper_form_section .form_btn button:hover {
@@ -121,22 +171,21 @@ button a {
 }
 
 .onboarding_content span {
-    font-size: 12px;
-    color: #1d1d1f;
-    line-height: 1.4;
-    letter-spacing: .2px;
-    font-family: inter_regular
+    font-size: var(--small-font-size);
+    /* color: #1d1d1f; */
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
 }
 
 .onboarding_content span a {
-    font-size: 12px;
+    font-size: var(--small-font-size);
     color: #1d1d1f;
     line-height: .9;
     letter-spacing: .2px;
     cursor: pointer;
     padding: 1px;
     text-decoration: underline;
-    font-family: inter_medium
+    font-weight: 400;
 }
 
 #onb_login_opt {
@@ -154,18 +203,53 @@ button a {
     visibility: hidden;
     max-height: 0;
     position: absolute;
-    height: 0px;
     transform: scale(.9);
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
 }
 
+/* floating input label */
+
+/* Import Google font - Poppins */
+
+
+.form_input {
+    position: relative;
+}
+
+
+.form_input label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    /* color: #fff;  */
+    font-size: var(--small-font-size);
+    font-weight: 300;
+    opacity: .9;
+    color: var(--main-font-third-color);
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+input:focus~label,
+input:valid~label {
+    top: 0;
+    left: 5px;
+    /* visibility: visible; */
+    opacity: .9;
+    padding: 0 4px;
+    background: var(--app-mode-color);
+}
+
 .active_lg_inputblock {
-    opacity: 1;
     visibility: visible;
+    opacity: 1;
     position: unset;
     max-height: 1000px;
     transform: scale(1);
-    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
+    transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration)
 }
 
 /* Bounding Balls Animation */
@@ -308,4 +392,37 @@ button .dot-spinner div {
 
 .wrong_input_highlight {
     animation: wrong_input 100ms ease-in-out;
+}
+
+/* Disclaimer content */
+
+.disclaimer_position {
+    position: fixed;
+    bottom: 20px;
+}
+
+.disclaimer_container {
+    width: 100%;
+    max-width: var(--wrapper-width);
+    margin: auto;
+    text-align: center;
+}
+
+.disclaimer_container span {
+    font-size: var(--small-font-size);
+}
+
+.disclaimer_container span a {
+    cursor: pointer;
+    color: rgb(25, 95, 170);
+
+}
+
+.disclaimer_container span a:hover {
+    text-decoration: underline;
+}
+
+.input_block_header .header {
+    font-weight: 700;
+    font-size: var(--large-font-size);
 }

@@ -5,16 +5,30 @@
     <title>Space</title>
     <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" href="../styles/login.css">
-    <link rel="stylesheet preload" as="fonts" href="../styles/fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet preload prefetch" as="style" href="../styles/sp_nav.css">
-    <script src="../scripts/login.js">
+    <!-- <link rel="stylesheet preload prefetch" as="style" href="../styles/sp_nav.css"> -->
+    <script>
+        window.addEventListener("DOMContentLoaded", (e) => {
+            // Check for local storage
+            document.querySelector('[login-form]').classList.add('wrapper_form_active')
+            let current_user = localStorage.getItem("_username_");
+            if (current_user) {
+                document.getElementById("lg_email_value").value = current_user;
+                document.getElementById("lg_password_value").focus()
+            }
+            apply_keypress_event()
+        })
+    </script>
+    <script defer src="../scripts/login.js">
     </script>
 
 </head>
 
 <body>
-    <div g-nav-container>
+    <!-- <div g-nav-container>s
         <nav class="global_header_container">
             <div class="header_conatainer">
                 <div id="_g_header_navbar_wrapper" class="g_header_navbar_wrapper">
@@ -30,12 +44,6 @@
                             </svg>
                         </span>
                     </div>
-                    <!-- <div class="dropdown_block">
-                        <span id="weare_nav_tab" g_nav_header_tab class="dropdown_block_heading">Weare</span>
-                    </div>
-                    <div class="dropdown_block">
-                        <span id="weare_nav_tab" g_nav_header_tab class="dropdown_block_heading">Weare</span>
-                    </div> -->
                     <div class="dropdown_block">
                         <span id="shoes_nav_tab" g_nav_header_tab class="dropdown_block_heading">Home</span>
                     </div>
@@ -57,22 +65,32 @@
     </div>
     <div class="advertising_strip_container strip_animation">
         <span>The advertising and important points will go here.</span>
-    </div>
+    </div> -->
     <main class="onboarding_content">
         <div class="wrapper_middle_section">
             <div login-form class="wrapper_form_section">
                 <div class="input_blocks_flow_container">
                     <div onb-lg-userid-block class="input_group_block active_lg_inputblock">
-                        <div>
-                            <h4>Login your space...</h4>
+                        <div class="input_block_header">
+                            <h4 class="header">Is it you?</h4>
                         </div>
                         <div class="form_input input_spacing">
-                            <input autofocus btn="onb-password-btn" id="lg_email_value" common-input
-                                placeholder="Your Email / Username / Mobile" type="email">
+                            <input autofocus btn="onb-password-btn" id="lg_email_value" common-input required
+                                spellcheck="false" placeholder="">
+                            <label for="">Username</label>
                         </div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-password-btn" common-input id="lg_password_value"
-                                placeholder="Your Password" type="password">
+                            <input btn="onb-password-btn" common-input id="lg_password_value" spellcheck="false"
+                                required type="password">
+                            <label for="">Password</label>
+                        </div>
+                        <div class="login_opts input_spacing">
+                            <div class="session_opt_block">
+                                <input id="session_opt" type="checkbox" />
+                                <label for="session_opt" class="duration">
+                                    Keep login for today</label>
+                            </div>
+                            <span>Forgot password</span>
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-password-btn onclick="authenticate_user(event,'n')" onb-lg-email-btn>
@@ -83,20 +101,21 @@
                             <span auth-wrong-input-value></span>
                         </div>
                         <div class="onboarding_content input_spacing">
-                            <span>New in space <a href="./register.html" target="_blank"
+                            <span>New in space? <a href="./register.html" target="_blank"
                                     id="registrationn_pointer">Register
                                     here</a>
                                 </a></span>
                         </div>
                     </div>
-                    <div style="background-color: red;" onb-otp-block class="input_group_block">
+                    <div onb-otp-block class="input_group_block">
                         <div>
                             <h4>Enter sent OTP</h4>
                             <span>on +91 9653429963</span>
                         </div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-lg-otp-btn" id="lg_otp_value" common-input placeholder="Enter OTP"
-                                type="number">
+                            <input placeholder="••••••" btn="onb-lg-otp-btn" class="input_partitioned" id="lg_otp_value"
+                                label="Mobile App Code" common-input type="number">
+                            <label for="">Sent OTP</label>
                             <div class="resend_otp_opt">
                                 <span>Resend OTP</span>
                             </div>
@@ -110,13 +129,20 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </main>
 
-
+    <footer>
+        <div class="common_container disclaimer_position">
+            <div class="disclaimer_container">
+                <span>By continuing you indicate that you agree to space's <a href="#">Terms of Service</a> and <a
+                        href="#">Privacy</a>.</span>
+                <br />
+                <span>© Space, Inc. 2023</span>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

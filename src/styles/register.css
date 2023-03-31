@@ -114,6 +114,13 @@ button a {
     text-align: center
 }
 
+.common_container {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: opacity 300ms;
+}
+
 .onboarding_content span {
     font-size: 12px;
     color: #1d1d1f;
@@ -497,4 +504,38 @@ button .dot-spinner div {
 
 .wrong_input_highlight {
     animation: wrong_input 100ms ease-in-out;
+}
+
+
+/* Disclaimer content */
+
+.disclaimer_position {
+    position: fixed;
+    bottom: 20px;
+}
+
+.disclaimer_container {
+    width: 100%;
+    max-width: var(--wrapper-width);
+    margin: auto;
+    text-align: center;
+}
+
+.disclaimer_container span {
+    font-size: var(--small-font-size);
+}
+
+.disclaimer_container span a {
+    cursor: pointer;
+    color: rgb(25, 95, 170);
+
+}
+
+.disclaimer_container span a:hover {
+    text-decoration: underline;
+}
+
+.input_block_header .header {
+    font-weight: 700;
+    font-size: var(--large-font-size);
 }

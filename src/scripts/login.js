@@ -19,9 +19,8 @@ function apply_keypress_event() {
             let cur_btn = document.querySelector(`[${input.getAttribute("btn")}]`)
             if (e.keyCode === 13) {
                 if (cur_btn) {
-                    cur_btn.click()
-                    cur_btn.style.opacity = .6
                     cur_btn.style.cursor = 'not-allowed'
+                    cur_btn.click()
                 }
             }
         })
@@ -38,6 +37,7 @@ function display_messages(btn, element, message) {
 }
 
 async function authenticate_user(event, flow) {
+    event.target.style.opacity = .6
     event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
     event.target.disabled = true
     let username = document.getElementById("lg_email_value").value
@@ -46,23 +46,36 @@ async function authenticate_user(event, flow) {
     if (!username) {
         event.target.innerHTML = 'Login'
         display_messages(event.target, warning, 'Please enter valid username',)
+        event.target.style.opacity = 1
+        event.target.style.cursor = 'pointer';
         event.target.disabled = false
         return
     }
     if (!password) {
         event.target.innerHTML = 'Login'
         display_messages(event.target, warning, 'Please enter passsword');
+        event.target.style.opacity = 1
+        event.target.style.cursor = 'pointer';
         event.target.disabled = false
         return
     }
     await call_api()
+    event.target.style.cursor = 'pointer';
     event.target.disabled = false
     event.target.innerHTML = 'Login'
     openlgBlock(event, 'n')
 }
 
+document.getElementById("lg_otp_value").addEventListener("keyup", (e) => {
+    if (e.target.value.length === 5) {
+        console.log('hit')
+        e.target.blur()
+        document.querySelector(`[${e.target.getAttribute("btn")}]`).click()
+    }
+})
+
 async function authenticate_user_otp(event, flow) {
-    console.log("sdsdsd")
+    event.target.style.opacity = .6
     event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
     let username = document.getElementById("lg_email_value").value
     let user_otp = document.getElementById("lg_otp_value").value
@@ -73,19 +86,10 @@ async function authenticate_user_otp(event, flow) {
     }
     await call_api()
     localStorage.setItem("_username_", username)
-    return window.location.href = 'http://127.0.0.1:5500/src/templates/space.main.html'
+    return window.location.href = 'http://127.0.0.1:5501/src/templates/login.html'
 }
 
-window.addEventListener("DOMContentLoaded", (e) => {
-    // Check for local storage
-    document.querySelector('[login-form]').classList.add('wrapper_form_active')
-    let current_user = localStorage.getItem("_username_");
-    if (current_user) {
-        document.getElementById("lg_email_value").value = current_user;
-        document.getElementById("lg_password_value").focus()
-    }
-    apply_keypress_event()
-})
+
 
 // common function for checking cookie and make necessary restrictions;
 function checkCockie() {
@@ -129,7 +133,6 @@ function openlgBlock(event, flow) {
         if (current_input_block.nextElementSibling) {
             current_input_block.nextElementSibling.classList.add("active_lg_inputblock")
             current_input_block.nextElementSibling.children[1].children[0].focus()
-
         }
     } else if (flow === "p") {
         if (current_input_block.previousElementSibling) {

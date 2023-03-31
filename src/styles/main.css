@@ -2,11 +2,13 @@ body {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 
 :root {
     --app-main-color: #0c74df;
+    --app-mode-color: white;
     --app-main-back-color: #F2F1EE;
     --app-secondary-back-color: #F0F0F0;
     --app-success-background: #14A44D;
@@ -16,8 +18,8 @@ body {
     --main-font-third-color: #212121;
     --app-secondary-border: #E1E1E1;
     --app-line-height: 1.5;
-    --app-letter-space: .5px;
-    --small-font-size: 12px;
+    --app-letter-space: .2px;
+    --small-font-size: 13px;
     --medium-font-size: 16px;
     --large-font-size: 18px;
     --extralarge-font-size: 22px;
@@ -27,7 +29,7 @@ body {
     --mainlinks-width: 650px;
     --input-height: 20px;
     --input-btn-padding: 10px;
-    --margin-input: 15px;
+    --margin-input: 20px;
     --minwidth-bottom-links-tabs: 90px;
     --g-header-height: 40px;
     --warapper-animation-duration: 350ms;
@@ -36,7 +38,7 @@ body {
 
 
 * {
-    font-family: inter_regular;
+    font-family: 'Inter', sans-serif;
     color: var(--main-font-color);
     letter-spacing: var(--app-letter-space);
 }
@@ -52,6 +54,25 @@ input {
     padding: 0;
     margin: 0;
     outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+[type="checkbox"] {
+    vertical-align: middle;
+    border: 1px solid #eee;
+    width: 12px;
+    height: 12px;
 }
 
 a {
