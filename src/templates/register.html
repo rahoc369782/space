@@ -5,14 +5,39 @@
     <title>Space</title>
     <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" href="../styles/register.css">
-    <link rel="stylesheet preload" as="fonts" href="../styles/fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet preload prefetch" as="style" href="../styles/sp_nav.css">
-    <script src="../scripts/register.js"></script>
+    <script>
+
+        window.addEventListener("DOMContentLoaded", (e) => {
+            // Check for session storage
+            let currentStep = sessionStorage.getItem("rg_status");
+            console.log(currentStep)
+            if (currentStep === 'done') {
+                return activate_rg_done()
+            }
+            if (currentStep) {
+                document.querySelector('[register-form]').classList.add('wrapper_form_active')
+                document.querySelectorAll(".active_rg_inputblock").forEach(item => {
+                    item.classList.remove("active_rg_inputblock")
+                })
+                // Enabled previous block in which user drop
+                let enabledBlock = document.querySelector(`[onb-rg-${currentStep}-block]`)
+                if (enabledBlock) {
+                    enabledBlock.classList.add("active_rg_inputblock")
+                }
+            }
+            document.querySelector('[register-form]').classList.add('wrapper_form_active')
+            apply_keypress_event()
+        })
+    </script>
+    <script defer src="../scripts/register.js"></script>
 </head>
 
 <body>
-    <div g-nav-container>
+    <!-- <div g-nav-container>
         <nav class="global_header_container">
             <div class="header_conatainer">
                 <div id="_g_header_navbar_wrapper" class="g_header_navbar_wrapper">
@@ -28,12 +53,6 @@
                             </svg>
                         </span>
                     </div>
-                    <!-- <div class="dropdown_block">
-                        <span id="weare_nav_tab" g_nav_header_tab class="dropdown_block_heading">Weare</span>
-                    </div>
-                    <div class="dropdown_block">
-                        <span id="weare_nav_tab" g_nav_header_tab class="dropdown_block_heading">Weare</span>
-                    </div> -->
                     <div class="dropdown_block">
                         <span id="shoes_nav_tab" g_nav_header_tab class="dropdown_block_heading">Home</span>
                     </div>
@@ -59,7 +78,7 @@
     </div>
     <div regular-status-strip class="advertising_strip_container strip_animation">
         <span>The advertising and important points will go here.</span>
-    </div>
+    </div> -->
     <div process-status-strip class="account_activated_warning">
         <span account-status-msg></span>
     </div>
@@ -68,12 +87,13 @@
             <div register-form class="wrapper_form_section">
                 <div class="input_blocks_flow_container">
                     <div onb-rg-userid-block class="input_group_block active_rg_inputblock">
-                        <div>
-                            Login your space
+                        <div class="input_block_heading">
+                            Let's get start
                         </div>
                         <div class="form_input input_spacing">
-                            <input autofocus btn="onb-rg-email-btn" common-input id="onb_email_input"
-                                placeholder="Your Email / Number" type="email">
+                            <input autofocus btn="onb-rg-email-btn" common-input id="onb_email_input" spellcheck="false"
+                                placeholder="" required type="email">
+                            <label>Your Email / Number</label>
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-rg-email-btn page=rg-userid-btn onclick="sendOtp(event,'n')" onb-email-btn>Send
@@ -91,10 +111,12 @@
                     <div onb-rg-otp-block class="input_group_block">
                         <div class="wrapper_other_onboardinopt">
                             <span user-unique-id></span>
-                            <label onclick="openrgBlock(event, 'p')">Change</label>
+                            <label onclick="openrgBlock(event, 'p')">change</label>
                         </div>
                         <div class="form_input input_spacing">
-                            <input autofocus btn="onb-rg-otp-btn" common-input placeholder="Enter OTP" type="number">
+                            <input placeholder="••••••" btn="onb-rg-otp-btn" class="input_partitioned" id="rg_otp_value"
+                                label="Mobile App Code" common-input type="number">
+                            <label for="">Sent OTP</label>
                             <div class="resend_otp_opt">
                                 <span>Resend OTP</span>
                             </div>
@@ -106,8 +128,14 @@
                     <div onb-rg-password-block class="input_group_block">
                         <div></div>
                         <div class="form_input input_spacing">
-                            <input autofocus btn="onb-rg-password-btn" common-input onb-password-input
-                                placeholder="Set Password" type="text">
+                            <input autofocus btn="onb-rg-password-btn" common-input onb-password-input placeholder=""
+                                required type="password">
+                            <label>Set password</label>
+                        </div>
+                        <div class="form_input input_spacing">
+                            <input autofocus btn="onb-rg-password-btn" common-input onb-confirm-password-input
+                                placeholder="" required type="password">
+                            <label>Confirm password</label>
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-rg-password-btn onclick="setPassword(event,'n')" onb-email-btn>Continue</button>
@@ -117,7 +145,8 @@
                         <div></div>
                         <div class="form_input input_spacing">
                             <input autofocus id="rg_username_value" btn="onb-rg-username-btn" common-input
-                                placeholder="Set Username" type="text">
+                                placeholder="" required type="text">
+                            <label>Set username</label>
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-rg-username-btn onclick="setUsername(event,'n')">Continue</button>
@@ -126,15 +155,19 @@
                     <div onb-rg-personal-block class="input_group_block">
                         <div></div>
                         <div class="form_input input_spacing">
-                            <input autofocus btn="onb-rg-personal-btn" common-input onb-username-input
-                                placeholder="Your DOB" type="text">
+                            <select>
+                                <option>male</option>
+                                <option>female</option>
+                            </select>
+                            <input autofocus btn="onb-rg-personal-btn" common-input id='rg_dob_value'
+                                placeholder="Your DOB" maxlength="10" type="text">
                         </div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-rg-personal-btn" common-input onb-username-input placeholder="Your Gender"
+                            <input btn="onb-rg-personal-btn" common-input onb-gender-input placeholder="Your Gender"
                                 type="text">
                         </div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-rg-personal-btn" common-input onb-username-input
+                            <input btn="onb-rg-personal-btn" common-input onb-profession-input
                                 placeholder="Your Profession" type="text">
                         </div>
                         <div class="form_btn input_spacing">
@@ -142,10 +175,7 @@
                                 Go</button>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
             <div onb-rg-done-block>
                 <div class="welcome_content">

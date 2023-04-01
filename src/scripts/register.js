@@ -45,6 +45,48 @@ function display_messages(btn, element, message) {
     }, 500)
 }
 
+document.getElementById("rg_otp_value").addEventListener("keyup", (e) => {
+    if (e.target.value.length === 6) {
+        e.target.blur()
+        document.querySelector(`[${e.target.getAttribute("btn")}]`).click()
+    }
+})
+
+document.getElementById("rg_dob_value").addEventListener("keyup", (e) => {
+    if (e.key === "Backspace") {
+        return;
+    }
+    if (e.target.value.length === 2) {
+        if (parseInt(e.target.value) < 31) {
+            e.target.value = e.target.value + '-'
+            return;
+        } else {
+            e.target.value = ''
+            e.target.classList.add("wrong_input_highlight")
+            setTimeout(() => {
+                e.target.classList.remove("wrong_input_highlight")
+                // element.innerText = ''
+            }, 500)
+            return
+        }
+    }
+    if (e.target.value.length === 5) {
+        let dob_input = e.target.value.split('-')
+        if (parseInt(dob_input[1]) < 13) {
+            e.target.value = e.target.value + '-';
+            return
+        } else {
+            e.target.classList.add("wrong_input_highlight")
+            setTimeout(() => {
+                e.target.classList.remove("wrong_input_highlight")
+                // element.innerText = ''
+            }, 500)
+            e.target.value = dob_input[0] + '-';
+            return;
+        }
+    }
+})
+
 async function verifyOtp(event, flow) {
     event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
     sessionStorage.setItem("rg_status", "password")
@@ -96,27 +138,6 @@ async function setPersonalinfo(event, flow) {
     // openrgBlock(event, flow)
 }
 
-window.addEventListener("DOMContentLoaded", (e) => {
-    // Check for session storage
-    let currentStep = sessionStorage.getItem("rg_status");
-    console.log(currentStep)
-    if (currentStep === 'done') {
-        return activate_rg_done()
-    }
-    if (currentStep) {
-        document.querySelector('[register-form]').classList.add('wrapper_form_active')
-        document.querySelectorAll(".active_rg_inputblock").forEach(item => {
-            item.classList.remove("active_rg_inputblock")
-        })
-        // Enabled previous block in which user drop
-        let enabledBlock = document.querySelector(`[onb-rg-${currentStep}-block]`)
-        if (enabledBlock) {
-            enabledBlock.classList.add("active_rg_inputblock")
-        }
-    }
-    document.querySelector('[register-form]').classList.add('wrapper_form_active')
-    apply_keypress_event()
-})
 
 async function sendOtp(event, flow) {
     event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'

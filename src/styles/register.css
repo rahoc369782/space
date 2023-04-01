@@ -39,6 +39,16 @@
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
 }
 
+.input_partitioned {
+    /* padding-left: 15px; */
+    letter-spacing: 22px;
+    /* border: 0; */
+    background-position: center;
+    background-repeat: repeat-x;
+    /* background-position-x: 35px; */
+    font-weight: 500;
+}
+
 .active_rg_inputblock {
     visibility: visible;
     opacity: 1;
@@ -63,11 +73,43 @@
     background: no-repeat;
     text-decoration: none;
     white-space: nowrap;
-    font-family: inter_regular
+    font-weight: 400;
 }
 
 .wrapper_form_section .input_spacing {
     margin-top: var(--margin-input)
+}
+
+.form_input {
+    position: relative;
+}
+
+/* // FLOATING INPUT LABEL */
+
+.form_input label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    /* color: #fff;  */
+    font-size: var(--small-font-size);
+    font-weight: 300;
+    opacity: .9;
+    color: var(--main-font-third-color);
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+input:focus~label,
+input:valid~label {
+    top: 0;
+    left: 5px;
+    /* visibility: visible; */
+    opacity: .9;
+    padding: 0 4px;
+    background: var(--app-mode-color);
 }
 
 .resend_otp_opt {
@@ -126,7 +168,7 @@ button a {
     color: #1d1d1f;
     line-height: 1.4;
     letter-spacing: .2px;
-    font-family: inter_regular
+    font-weight: 400;
 }
 
 .onboarding_content span a {
@@ -137,7 +179,7 @@ button a {
     cursor: pointer;
     padding: 1px;
     text-decoration: underline;
-    font-family: inter_medium
+    font-weight: 500;
 }
 
 #onb_login_opt {
@@ -246,7 +288,7 @@ button a {
 }
 
 .account_created_content a {
-    font-family: inter_medium;
+    font-weight: 500;
     text-decoration: underline;
     color: #0071e3;
 }

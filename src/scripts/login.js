@@ -67,7 +67,7 @@ async function authenticate_user(event, flow) {
 }
 
 document.getElementById("lg_otp_value").addEventListener("keyup", (e) => {
-    if (e.target.value.length === 5) {
+    if (e.target.value.length === 6) {
         console.log('hit')
         e.target.blur()
         document.querySelector(`[${e.target.getAttribute("btn")}]`).click()
