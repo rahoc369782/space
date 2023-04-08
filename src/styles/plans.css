@@ -118,15 +118,6 @@
     }
 }
 
-.plans_strip {
-    width: 100%;
-    background-color: var(--plans-strip-background);
-    max-height: 0px;
-    position: relative;
-    overflow: visible !important;
-    animation: plans_strip_animations 800ms forwards;
-    animation-delay: .8s;
-}
 
 .account_activated_warning {
     background-color: var(--app-success-background);
@@ -137,6 +128,16 @@
     justify-content: center;
     align-items: center;
     animation: strip_animations 800ms ease-in-out forwards;
+}
+
+.account_activated_warning span {
+    font-size: var(--small-font-size);
+    opacity: 1;
+    color: white;
+    /* animation: display_strip_content 400ms ease-in-out forwards;
+    animation-delay: .8s; */
+    transition: opacity 1200ms;
+    animation-delay: 1s;
 }
 
 .plans_strip_container {

@@ -2,7 +2,9 @@ body {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    min-width: 300px;
+    /* background-image: url(https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png); */
+    /* font-family: 'Noto Sans Mono', monospace; */
 }
 
 
@@ -19,6 +21,7 @@ body {
     --app-secondary-border: #E1E1E1;
     --app-line-height: 1.5;
     --app-letter-space: .2px;
+    --smallest-font-size: 12px;
     --small-font-size: 13px;
     --medium-font-size: 16px;
     --large-font-size: 18px;
@@ -33,12 +36,13 @@ body {
     --minwidth-bottom-links-tabs: 90px;
     --g-header-height: 40px;
     --warapper-animation-duration: 350ms;
-    --app-warning-color: rgb(235, 87, 87);
+    --app-warning-color: #FC2947;
 }
 
 
 * {
     font-family: 'Inter', sans-serif;
+    /* font-family: 'Noto Sans Mono', monospace; */
     color: var(--main-font-color);
     letter-spacing: var(--app-letter-space);
 }

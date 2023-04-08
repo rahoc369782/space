@@ -26,13 +26,10 @@
     font-family: inter_ebold
 }
 
-/* .wrapper_middle_section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: inherit
-} */
+.wrapper_middle_section {
+    /* padding: 35px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
 
 .wrapper_form_section {
     margin: auto;
@@ -61,6 +58,7 @@
 }
 
 .wrapper_form_section .form_input span {
+    user-select: none;
     cursor: pointer;
     list-style: none;
     color: var(--app-main-color);
@@ -68,19 +66,21 @@
     letter-spacing: .02em;
     line-height: 1;
     background: no-repeat;
-    text-decoration: none;
     white-space: nowrap;
     font-weight: 400;
 }
 
-.wrapper_form_section .input_spacing {
+.wrapper_form_section .form_input span:hover {
+    text-decoration: underline;
+}
+
+.input_spacing {
     margin-top: var(--margin-input)
 }
 
 .resend_otp_opt {
     display: flex;
-    justify-content: end;
-    margin-top: 10px
+    justify-content: center;
 }
 
 .wrapper_form_section .form_input input {
@@ -164,6 +164,22 @@ button a {
     opacity: .9
 }
 
+@keyframes btn_clicked {
+    from {
+        scale: .9
+    }
+
+    to {
+        scale: 1
+    }
+}
+
+.btn_clicked_animation {
+    opacity: .8;
+    cursor: not-allowed !important;
+    animation: btn_clicked 30ms ease-in-out;
+}
+
 .onboarding_content {
     display: flex;
     justify-content: center;
@@ -172,14 +188,16 @@ button a {
 
 .onboarding_content span {
     font-size: var(--small-font-size);
-    /* color: #1d1d1f; */
+    color: var(--main-font-secondary-color);
     line-height: var(--app-line-height);
     letter-spacing: var(--app-letter-space);
+    font-weight: 400;
+    opacity: .9;
 }
 
 .onboarding_content span a {
     font-size: var(--small-font-size);
-    color: #1d1d1f;
+    color: var(--);
     line-height: .9;
     letter-spacing: .2px;
     cursor: pointer;
@@ -205,6 +223,23 @@ button a {
     position: absolute;
     transform: scale(.9);
     transition: opacity var(--warapper-animation-duration), visibility var(--warapper-animation-duration), transform var(--warapper-animation-duration),
+}
+
+.wrapper_other_onboardinopt {
+    background: rgba(242, 241, 238, .6);
+    border: 1px solid var(--app-main-border);
+    padding: 10px;
+    border-radius: 3px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center
+}
+
+.wrapper_other_onboardinopt label {
+    cursor: pointer;
+    font-size: var(--small-font-size);
+    color: var(--main-font-third-color);
+    font-weight: 500
 }
 
 /* floating input label */
@@ -241,6 +276,36 @@ input:valid~label {
     opacity: .9;
     padding: 0 4px;
     background: var(--app-mode-color);
+}
+
+.wrong_input {
+    width: 100%;
+    user-select: none;
+    border-radius: 3px;
+    opacity: 0;
+    visibility: hidden;
+    max-width: var(--wrapper-width);
+    background-color: transparent;
+    transition: opacity 300ms;
+}
+
+.wrong_input_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.wrong_input span {
+    /* #ff5722 */
+    /* background-color: red; */
+    display: block;
+    text-align: left;
+    font-size: var(--small-font-size);
+    color: var(--app-warning-color)
+}
+
+.wrong_input_active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .active_lg_inputblock {
@@ -394,6 +459,7 @@ button .dot-spinner div {
     animation: wrong_input 100ms ease-in-out;
 }
 
+
 /* Disclaimer content */
 
 .disclaimer_position {
@@ -422,7 +488,14 @@ button .dot-spinner div {
     text-decoration: underline;
 }
 
+.input_block_header {
+    margin: 12px 0px 32px 0px;
+    user-select: none;
+}
+
 .input_block_header .header {
-    font-weight: 700;
+    font-weight: 600;
     font-size: var(--large-font-size);
+    padding: 10px 0px 0px 0px;
+    color: var(--main-font-secondary-color);
 }

@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
     <!-- <link rel="stylesheet preload prefetch" as="style" href="../styles/sp_nav.css"> -->
     <script>
@@ -72,16 +75,18 @@
                 <div class="input_blocks_flow_container">
                     <div onb-lg-userid-block class="input_group_block active_lg_inputblock">
                         <div class="input_block_header">
-                            <h4 class="header">Is it you?</h4>
+                            <div class="header">Continue your journey...</div>
+                            <span>Just conquere yourself</span>
+                            <!-- <div class="header">Let's check is it you?</div> -->
                         </div>
                         <div class="form_input input_spacing">
-                            <input autofocus btn="onb-password-btn" id="lg_email_value" common-input required
-                                spellcheck="false" placeholder="">
+                            <input onfocus="disable_wrong_input()" autofocus btn="onb-password-btn" id="lg_email_value"
+                                common-input required spellcheck="false" placeholder="">
                             <label for="">Username</label>
                         </div>
                         <div class="form_input input_spacing">
-                            <input btn="onb-password-btn" common-input id="lg_password_value" spellcheck="false"
-                                required type="password">
+                            <input onfocus="disable_wrong_input()" btn="onb-password-btn" common-input
+                                id="lg_password_value" spellcheck="false" required type="password">
                             <label for="">Password</label>
                         </div>
                         <div class="login_opts input_spacing">
@@ -97,9 +102,6 @@
                                 Login
                             </button>
                         </div>
-                        <div class="wrong_input input_spacing">
-                            <span auth-wrong-input-value></span>
-                        </div>
                         <div class="onboarding_content input_spacing">
                             <span>New in space? <a href="./register.html" target="_blank"
                                     id="registrationn_pointer">Register
@@ -108,29 +110,38 @@
                         </div>
                     </div>
                     <div onb-otp-block class="input_group_block">
-                        <div>
-                            <h4>Enter sent OTP</h4>
-                            <span>on +91 9653429963</span>
+                        <div class="input_block_header">
+                            <div class="header">Enter OTP sent to</div>
+                            <span>Below mentioned credential</span>
+                            <!-- <div class="header">Let's check is it you?</div> -->
+                        </div>
+                        <div class="wrapper_other_onboardinopt">
+                            <span user-unique-id></span>
+                            <label onclick="openlgBlock(event, 'p')">change</label>
                         </div>
                         <div class="form_input input_spacing">
-                            <input placeholder="••••••" btn="onb-lg-otp-btn" class="input_partitioned" id="lg_otp_value"
-                                label="Mobile App Code" common-input type="number">
+                            <input onfocus="disable_wrong_input()" placeholder="••••••" btn="onb-lg-otp-btn"
+                                class="input_partitioned" id="lg_otp_value" label="Mobile App Code" common-input
+                                type="number">
                             <label for="">Sent OTP</label>
-                            <div class="resend_otp_opt">
-                                <span>Resend OTP</span>
+                            <div class="resend_otp_opt input_spacing">
+                                <span>Resend in 13 seconds</span>
                             </div>
                         </div>
                         <div class="form_btn input_spacing">
                             <button onb-lg-otp-btn type="submit" onclick="authenticate_user_otp(event,'n')"
                                 onb-otp-btn>Continue</button>
                         </div>
-                        <div class="wrong_input input_spacing">
-                            <span otp-wrong-input-value></span>
-                        </div>
                     </div>
                 </div>
             </div>
+            <div class="wrong_input input_spacing">
+                <div class="wrong_input_wrapper">
+                    <span></span>
+                </div>
+            </div>
         </div>
+
     </main>
 
     <footer>

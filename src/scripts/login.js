@@ -19,73 +19,82 @@ function apply_keypress_event() {
             let cur_btn = document.querySelector(`[${input.getAttribute("btn")}]`)
             if (e.keyCode === 13) {
                 if (cur_btn) {
-                    cur_btn.style.cursor = 'not-allowed'
                     cur_btn.click()
                 }
             }
         })
     })
 }
+function disable_wrong_input() {
+    let warning_ele = document.getElementsByClassName('wrong_input')[0];
+    warning_ele.classList.remove("wrong_input_active")
+    warning_ele.children[0].children[0].innerText = "";
+}
+function common_btn_clicked_fun(btn) {
+    btn.disabled = true
+    btn.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>';
+    btn.classList.add('btn_clicked_animation');
+}
 
-function display_messages(btn, element, message) {
-    element.innerText = message;
+function common_btn_unclicked_fun(btn, text) {
+    btn.innerHTML = text;
+    btn.disabled = false;
+    btn.classList.remove('btn_clicked_animation');
+}
+
+function display_messages(btn, message) {
+    let warning_ele = document.getElementsByClassName('wrong_input')[0]
+    warning_ele.children[0].children[0].innerText = message;
     btn.classList.add("wrong_input_highlight")
+    warning_ele.classList.add("wrong_input_active")
     setTimeout(() => {
         btn.classList.remove("wrong_input_highlight")
-        // element.innerText = ''
     }, 500)
 }
 
 async function authenticate_user(event, flow) {
-    event.target.style.opacity = .6
-    event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
-    event.target.disabled = true
-    let username = document.getElementById("lg_email_value").value
-    let password = document.getElementById("lg_password_value").value
-    let warning = document.querySelector("[auth-wrong-input-value]")
-    if (!username) {
-        event.target.innerHTML = 'Login'
-        display_messages(event.target, warning, 'Please enter valid username',)
-        event.target.style.opacity = 1
-        event.target.style.cursor = 'pointer';
-        event.target.disabled = false
-        return
+    common_btn_clicked_fun(event.target)
+    disable_wrong_input();
+    let username = document.getElementById("lg_email_value")
+    let password = document.getElementById("lg_password_value")
+    if (!username.value) {
+        common_btn_unclicked_fun(event.target, "Login");
+        return display_messages(event.target, 'Please enter valid username',)
     }
-    if (!password) {
-        event.target.innerHTML = 'Login'
-        display_messages(event.target, warning, 'Please enter passsword');
-        event.target.style.opacity = 1
-        event.target.style.cursor = 'pointer';
-        event.target.disabled = false
-        return
+    if (!password.value) {
+        common_btn_unclicked_fun(event.target, "Login");
+        return display_messages(event.target, 'Please enter valid username',)
     }
-    await call_api()
-    event.target.style.cursor = 'pointer';
-    event.target.disabled = false
-    event.target.innerHTML = 'Login'
+    await call_api();
+    let user_id_field2 = document.querySelector('[user-unique-id]');
+    user_id_field2.innerText = username.value;
+    username.value = "";
+    password.value = "";
+    common_btn_unclicked_fun(event.target, "Login");
     openlgBlock(event, 'n')
 }
 
 document.getElementById("lg_otp_value").addEventListener("keyup", (e) => {
     if (e.target.value.length === 6) {
-        console.log('hit')
         e.target.blur()
         document.querySelector(`[${e.target.getAttribute("btn")}]`).click()
     }
 })
 
 async function authenticate_user_otp(event, flow) {
-    event.target.style.opacity = .6
-    event.target.innerHTML = '<div class="dot-spinner"><div></div><div></div><div></div><div></div></div>'
+    common_btn_clicked_fun(event.target)
+    disable_wrong_input();
     let username = document.getElementById("lg_email_value").value
-    let user_otp = document.getElementById("lg_otp_value").value
-    let warning = document.querySelector("[otp-wrong-input-value]")
-    if (!user_otp) {
-        display_messages(event.target, warning, 'Please enter received OTP')
-        return
+    let otp_ele = document.getElementById("lg_otp_value")
+    let otp = otp_ele.value;
+    if (!otp || otp.length < 6) {
+        otp_ele.value = ''
+        common_btn_unclicked_fun(event.target, "Verify");
+        return display_messages(event.target, 'Please enter valid OTP')
     }
     await call_api()
-    localStorage.setItem("_username_", username)
+    localStorage.setItem("_username_", document.querySelector('[user-unique-id]').innerText)
+    common_btn_unclicked_fun(event.target, "Verify");
     return window.location.href = 'http://127.0.0.1:5501/src/templates/login.html'
 }
 

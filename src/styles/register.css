@@ -10,6 +10,13 @@
     height: inherit
 }
 
+.warning_msg {
+    font-size: calc(var(--small-font-size) - 2px);
+    color: var(--main-font-secondary-color);
+    opacity: .9;
+}
+
+
 .wrapper_form_section {
     margin: auto;
     width: var(--wrapper-width);
@@ -49,6 +56,17 @@
     font-weight: 500;
 }
 
+#input_error {
+    display: flex;
+    align-items: center;
+}
+
+[input-error-msg] {
+    padding-left: 7px;
+    font-size: var(--small-font-size);
+    color: #ff3333;
+}
+
 .active_rg_inputblock {
     visibility: visible;
     opacity: 1;
@@ -76,7 +94,7 @@
     font-weight: 400;
 }
 
-.wrapper_form_section .input_spacing {
+.input_spacing {
     margin-top: var(--margin-input)
 }
 
@@ -131,6 +149,7 @@ input:valid~label {
     width: 100%
 }
 
+
 button a {
     color: #fff
 }
@@ -150,6 +169,22 @@ button a {
     opacity: .9
 }
 
+@keyframes btn_clicked {
+    from {
+        scale: .9
+    }
+
+    to {
+        scale: 1
+    }
+}
+
+.btn_clicked_animation {
+    opacity: .8;
+    cursor: not-allowed !important;
+    animation: btn_clicked 30ms ease-in-out;
+}
+
 .onboarding_content {
     display: flex;
     justify-content: center;
@@ -164,11 +199,12 @@ button a {
 }
 
 .onboarding_content span {
-    font-size: 12px;
-    color: #1d1d1f;
-    line-height: 1.4;
-    letter-spacing: .2px;
+    font-size: var(--small-font-size);
+    color: var(--main-font-secondary-color);
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
     font-weight: 400;
+    opacity: .9;
 }
 
 .onboarding_content span a {
@@ -186,15 +222,65 @@ button a {
     display: block
 }
 
+.rg_opts {
+    user-select: none;
+    margin-top: 15px;
+}
+
+/* ._opt_block {
+    display: flex;
+    align-items: center;
+} */
+
+._opt_block .rg_opt_content {
+    text-align: left;
+    padding-left: 2px;
+    line-height: var(--app-line-height);
+    letter-spacing: var(--app-letter-space);
+    font-size: var(--small-font-size);
+    color: var(--main-font-secondary-color);
+    opacity: .9;
+}
+
+._opt_block .opt {
+    cursor: pointer;
+    padding-top: 5px;
+}
+
 #registrationn_pointer {
     color: var(--app-main-color);
     cursor: pointer;
     text-decoration: none
 }
 
+.wrong_input {
+    width: 100%;
+    user-select: none;
+    border-radius: 3px;
+    opacity: 0;
+    visibility: hidden;
+    max-width: var(--wrapper-width);
+    background-color: transparent;
+    transition: opacity 300ms;
+}
+
+.wrong_input_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .wrong_input span {
+    /* #ff5722 */
+    /* background-color: red; */
+    display: block;
+    text-align: left;
     font-size: var(--small-font-size);
     color: var(--app-warning-color)
+}
+
+.wrong_input_active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .wrapper_other_onboardinopt {
@@ -363,10 +449,6 @@ button a {
     }
 }
 
-.wrong_input span {
-    font-size: var(--small-font-size);
-    color: var(--app-warning-color)
-}
 
 /* Bounding Balls Animation */
 .dot-spinner {
@@ -553,7 +635,8 @@ button .dot-spinner div {
 
 .disclaimer_position {
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
+    /* margin: 70px 0px; */
 }
 
 .disclaimer_container {
@@ -564,7 +647,7 @@ button .dot-spinner div {
 }
 
 .disclaimer_container span {
-    font-size: var(--small-font-size);
+    font-size: var(--smallest-font-size);
 }
 
 .disclaimer_container span a {
@@ -577,7 +660,16 @@ button .dot-spinner div {
     text-decoration: underline;
 }
 
-.input_block_header .header {
-    font-weight: 700;
-    font-size: var(--large-font-size);
+.input_block_header {
+    margin: 12px 0px 12px 0px;
+    user-select: none;
 }
+
+.input_block_header .header {
+    font-weight: 600;
+    font-size: var(--large-font-size);
+    padding: 10px 0px 0px 0px;
+    color: var(--main-font-secondary-color);
+}
+
+/* input filed switching registration */

@@ -4,6 +4,10 @@ function changes_in_css_vars(var_key, value) {
     return;
 }
 window.addEventListener('load', () => {
+    let account_msg = document.querySelector('[account-status-msg]');
+    account_msg.innerText = `Welcome ${sessionStorage.getItem("_username_")}, your account is created successfully`;
+    let activation_strip = document.querySelector('[process-status-strip]')
+    activation_strip.classList.add('account_activated')
     setTimeout(() => {
         let plans_wrapper_height = document.querySelector('[g-strip-container]')
         changes_in_css_vars('--plans-strip-actual-height', plans_wrapper_height.clientHeight)
